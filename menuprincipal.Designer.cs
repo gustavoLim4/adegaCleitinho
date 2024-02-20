@@ -1,0 +1,404 @@
+﻿namespace adegaCleitinho
+{
+    partial class menuprincipal
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.pnlmenuPR = new System.Windows.Forms.Panel();
+            this.lblNumCliente = new System.Windows.Forms.Label();
+            this.lblClientes = new System.Windows.Forms.Label();
+            this.lblCompras = new System.Windows.Forms.Label();
+            this.lblNumCompra = new System.Windows.Forms.Label();
+            this.lblfornecedor = new System.Windows.Forms.Label();
+            this.lblfuncionrios = new System.Windows.Forms.Label();
+            this.lblNumfuncionario = new System.Windows.Forms.Label();
+            this.fontDialog1 = new System.Windows.Forms.FontDialog();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pctFechaMenu = new System.Windows.Forms.PictureBox();
+            this.lblNumFornecedor = new System.Windows.Forms.Label();
+            this.btnFuncionarios = new System.Windows.Forms.Button();
+            this.btnClientes = new System.Windows.Forms.Button();
+            this.btnFornecedores = new System.Windows.Forms.Button();
+            this.btnCompras = new System.Windows.Forms.Button();
+            this.btnProdutos = new System.Windows.Forms.Button();
+            this.btnEmail = new System.Windows.Forms.Button();
+            this.lblMensagens = new System.Windows.Forms.Label();
+            this.dgvMensagem = new System.Windows.Forms.DataGridView();
+            this.lblEstoque = new System.Windows.Forms.Label();
+            this.dvgEstoque = new System.Windows.Forms.DataGridView();
+            this.pnlmenuPR.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctFechaMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMensagem)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dvgEstoque)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // pnlmenuPR
+            // 
+            this.pnlmenuPR.BackColor = System.Drawing.Color.Black;
+            this.pnlmenuPR.Controls.Add(this.dvgEstoque);
+            this.pnlmenuPR.Controls.Add(this.lblEstoque);
+            this.pnlmenuPR.Controls.Add(this.dgvMensagem);
+            this.pnlmenuPR.Controls.Add(this.lblMensagens);
+            this.pnlmenuPR.Controls.Add(this.btnCompras);
+            this.pnlmenuPR.Controls.Add(this.btnProdutos);
+            this.pnlmenuPR.Controls.Add(this.btnEmail);
+            this.pnlmenuPR.Controls.Add(this.btnFornecedores);
+            this.pnlmenuPR.Controls.Add(this.btnClientes);
+            this.pnlmenuPR.Controls.Add(this.btnFuncionarios);
+            this.pnlmenuPR.Controls.Add(this.lblNumCliente);
+            this.pnlmenuPR.Controls.Add(this.lblClientes);
+            this.pnlmenuPR.Controls.Add(this.lblCompras);
+            this.pnlmenuPR.Controls.Add(this.lblNumCompra);
+            this.pnlmenuPR.Controls.Add(this.lblfornecedor);
+            this.pnlmenuPR.Controls.Add(this.lblNumFornecedor);
+            this.pnlmenuPR.Controls.Add(this.lblfuncionrios);
+            this.pnlmenuPR.Controls.Add(this.lblNumfuncionario);
+            this.pnlmenuPR.Controls.Add(this.pictureBox1);
+            this.pnlmenuPR.Controls.Add(this.pctFechaMenu);
+            this.pnlmenuPR.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pnlmenuPR.Location = new System.Drawing.Point(5, 5);
+            this.pnlmenuPR.Name = "pnlmenuPR";
+            this.pnlmenuPR.Size = new System.Drawing.Size(1222, 655);
+            this.pnlmenuPR.TabIndex = 0;
+            this.pnlmenuPR.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlmenuPR_Paint);
+            // 
+            // lblNumCliente
+            // 
+            this.lblNumCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
+            this.lblNumCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumCliente.ForeColor = System.Drawing.Color.Black;
+            this.lblNumCliente.Location = new System.Drawing.Point(25, 210);
+            this.lblNumCliente.Name = "lblNumCliente";
+            this.lblNumCliente.Size = new System.Drawing.Size(306, 37);
+            this.lblNumCliente.TabIndex = 13;
+            this.lblNumCliente.Text = "CLIENTES";
+            this.lblNumCliente.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblClientes
+            // 
+            this.lblClientes.BackColor = System.Drawing.Color.Black;
+            this.lblClientes.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblClientes.Font = new System.Drawing.Font("Britannic Bold", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClientes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(223)))), ((int)(((byte)(76)))));
+            this.lblClientes.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblClientes.Location = new System.Drawing.Point(25, 242);
+            this.lblClientes.Name = "lblClientes";
+            this.lblClientes.Size = new System.Drawing.Size(306, 48);
+            this.lblClientes.TabIndex = 12;
+            this.lblClientes.Text = "000";
+            this.lblClientes.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblClientes.UseMnemonic = false;
+            // 
+            // lblCompras
+            // 
+            this.lblCompras.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
+            this.lblCompras.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCompras.ForeColor = System.Drawing.Color.Black;
+            this.lblCompras.Location = new System.Drawing.Point(360, 210);
+            this.lblCompras.Name = "lblCompras";
+            this.lblCompras.Size = new System.Drawing.Size(294, 32);
+            this.lblCompras.TabIndex = 11;
+            this.lblCompras.Text = "COMPRAS";
+            this.lblCompras.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // lblNumCompra
+            // 
+            this.lblNumCompra.BackColor = System.Drawing.Color.Black;
+            this.lblNumCompra.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblNumCompra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblNumCompra.Font = new System.Drawing.Font("Britannic Bold", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumCompra.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(223)))), ((int)(((byte)(76)))));
+            this.lblNumCompra.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblNumCompra.Location = new System.Drawing.Point(362, 242);
+            this.lblNumCompra.Name = "lblNumCompra";
+            this.lblNumCompra.Size = new System.Drawing.Size(292, 48);
+            this.lblNumCompra.TabIndex = 10;
+            this.lblNumCompra.Text = "000";
+            this.lblNumCompra.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblNumCompra.UseMnemonic = false;
+            // 
+            // lblfornecedor
+            // 
+            this.lblfornecedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
+            this.lblfornecedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblfornecedor.ForeColor = System.Drawing.Color.Black;
+            this.lblfornecedor.Location = new System.Drawing.Point(360, 118);
+            this.lblfornecedor.Name = "lblfornecedor";
+            this.lblfornecedor.Size = new System.Drawing.Size(294, 37);
+            this.lblfornecedor.TabIndex = 9;
+            this.lblfornecedor.Text = "FORNECEDOR";
+            this.lblfornecedor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblfuncionrios
+            // 
+            this.lblfuncionrios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
+            this.lblfuncionrios.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblfuncionrios.ForeColor = System.Drawing.Color.Black;
+            this.lblfuncionrios.Location = new System.Drawing.Point(23, 116);
+            this.lblfuncionrios.Name = "lblfuncionrios";
+            this.lblfuncionrios.Size = new System.Drawing.Size(308, 37);
+            this.lblfuncionrios.TabIndex = 7;
+            this.lblfuncionrios.Text = "FUNCIONARIOS";
+            this.lblfuncionrios.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblNumfuncionario
+            // 
+            this.lblNumfuncionario.BackColor = System.Drawing.Color.Black;
+            this.lblNumfuncionario.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblNumfuncionario.Font = new System.Drawing.Font("Britannic Bold", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumfuncionario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(223)))), ((int)(((byte)(76)))));
+            this.lblNumfuncionario.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblNumfuncionario.Location = new System.Drawing.Point(25, 153);
+            this.lblNumfuncionario.Name = "lblNumfuncionario";
+            this.lblNumfuncionario.Size = new System.Drawing.Size(306, 45);
+            this.lblNumfuncionario.TabIndex = 2;
+            this.lblNumfuncionario.Text = "000";
+            this.lblNumfuncionario.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblNumfuncionario.UseMnemonic = false;
+            this.lblNumfuncionario.Click += new System.EventHandler(this.lblNumInstrutor_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::adegaCleitinho.Properties.Resources.logo;
+            this.pictureBox1.Location = new System.Drawing.Point(7, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(258, 101);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pctFechaMenu
+            // 
+            this.pctFechaMenu.Image = global::adegaCleitinho.Properties.Resources.fechar_menu;
+            this.pctFechaMenu.Location = new System.Drawing.Point(1175, 7);
+            this.pctFechaMenu.Name = "pctFechaMenu";
+            this.pctFechaMenu.Size = new System.Drawing.Size(38, 37);
+            this.pctFechaMenu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pctFechaMenu.TabIndex = 0;
+            this.pctFechaMenu.TabStop = false;
+            this.pctFechaMenu.Click += new System.EventHandler(this.pctFechaMenu_Click);
+            // 
+            // lblNumFornecedor
+            // 
+            this.lblNumFornecedor.BackColor = System.Drawing.Color.Black;
+            this.lblNumFornecedor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblNumFornecedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblNumFornecedor.Font = new System.Drawing.Font("Britannic Bold", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumFornecedor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(223)))), ((int)(((byte)(76)))));
+            this.lblNumFornecedor.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblNumFornecedor.Location = new System.Drawing.Point(362, 151);
+            this.lblNumFornecedor.Name = "lblNumFornecedor";
+            this.lblNumFornecedor.Size = new System.Drawing.Size(292, 47);
+            this.lblNumFornecedor.TabIndex = 8;
+            this.lblNumFornecedor.Text = "000";
+            this.lblNumFornecedor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblNumFornecedor.UseMnemonic = false;
+            // 
+            // btnFuncionarios
+            // 
+            this.btnFuncionarios.BackColor = System.Drawing.Color.Black;
+            this.btnFuncionarios.BackgroundImage = global::adegaCleitinho.Properties.Resources.Group_2;
+            this.btnFuncionarios.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnFuncionarios.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnFuncionarios.FlatAppearance.BorderSize = 0;
+            this.btnFuncionarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFuncionarios.ImageKey = "(nenhum/a)";
+            this.btnFuncionarios.Location = new System.Drawing.Point(30, 304);
+            this.btnFuncionarios.Name = "btnFuncionarios";
+            this.btnFuncionarios.Size = new System.Drawing.Size(172, 157);
+            this.btnFuncionarios.TabIndex = 20;
+            this.btnFuncionarios.UseVisualStyleBackColor = false;
+            // 
+            // btnClientes
+            // 
+            this.btnClientes.BackColor = System.Drawing.Color.Black;
+            this.btnClientes.BackgroundImage = global::adegaCleitinho.Properties.Resources.Group_3;
+            this.btnClientes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnClientes.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnClientes.FlatAppearance.BorderSize = 0;
+            this.btnClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClientes.ImageKey = "(nenhum/a)";
+            this.btnClientes.Location = new System.Drawing.Point(243, 304);
+            this.btnClientes.Name = "btnClientes";
+            this.btnClientes.Size = new System.Drawing.Size(172, 157);
+            this.btnClientes.TabIndex = 22;
+            this.btnClientes.UseVisualStyleBackColor = false;
+            // 
+            // btnFornecedores
+            // 
+            this.btnFornecedores.BackColor = System.Drawing.Color.Black;
+            this.btnFornecedores.BackgroundImage = global::adegaCleitinho.Properties.Resources.Group_6;
+            this.btnFornecedores.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnFornecedores.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnFornecedores.FlatAppearance.BorderSize = 0;
+            this.btnFornecedores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFornecedores.ImageKey = "(nenhum/a)";
+            this.btnFornecedores.Location = new System.Drawing.Point(468, 304);
+            this.btnFornecedores.Name = "btnFornecedores";
+            this.btnFornecedores.Size = new System.Drawing.Size(172, 157);
+            this.btnFornecedores.TabIndex = 23;
+            this.btnFornecedores.UseVisualStyleBackColor = false;
+            // 
+            // btnCompras
+            // 
+            this.btnCompras.BackColor = System.Drawing.Color.Black;
+            this.btnCompras.BackgroundImage = global::adegaCleitinho.Properties.Resources.Group_5;
+            this.btnCompras.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnCompras.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnCompras.FlatAppearance.BorderSize = 0;
+            this.btnCompras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCompras.ImageKey = "(nenhum/a)";
+            this.btnCompras.Location = new System.Drawing.Point(468, 480);
+            this.btnCompras.Name = "btnCompras";
+            this.btnCompras.Size = new System.Drawing.Size(172, 157);
+            this.btnCompras.TabIndex = 26;
+            this.btnCompras.UseVisualStyleBackColor = false;
+            // 
+            // btnProdutos
+            // 
+            this.btnProdutos.BackColor = System.Drawing.Color.Black;
+            this.btnProdutos.BackgroundImage = global::adegaCleitinho.Properties.Resources.Group_1;
+            this.btnProdutos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnProdutos.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnProdutos.FlatAppearance.BorderSize = 0;
+            this.btnProdutos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProdutos.ImageKey = "(nenhum/a)";
+            this.btnProdutos.Location = new System.Drawing.Point(243, 480);
+            this.btnProdutos.Name = "btnProdutos";
+            this.btnProdutos.Size = new System.Drawing.Size(172, 157);
+            this.btnProdutos.TabIndex = 25;
+            this.btnProdutos.UseVisualStyleBackColor = false;
+            // 
+            // btnEmail
+            // 
+            this.btnEmail.BackColor = System.Drawing.Color.Black;
+            this.btnEmail.BackgroundImage = global::adegaCleitinho.Properties.Resources.Group_4;
+            this.btnEmail.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnEmail.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnEmail.FlatAppearance.BorderSize = 0;
+            this.btnEmail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEmail.ImageKey = "(nenhum/a)";
+            this.btnEmail.Location = new System.Drawing.Point(30, 480);
+            this.btnEmail.Name = "btnEmail";
+            this.btnEmail.Size = new System.Drawing.Size(172, 157);
+            this.btnEmail.TabIndex = 24;
+            this.btnEmail.UseVisualStyleBackColor = false;
+            // 
+            // lblMensagens
+            // 
+            this.lblMensagens.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
+            this.lblMensagens.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMensagens.ForeColor = System.Drawing.Color.Black;
+            this.lblMensagens.Location = new System.Drawing.Point(717, 51);
+            this.lblMensagens.Name = "lblMensagens";
+            this.lblMensagens.Size = new System.Drawing.Size(451, 37);
+            this.lblMensagens.TabIndex = 27;
+            this.lblMensagens.Text = "ÚLTIMAS MENSAGENS";
+            this.lblMensagens.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // dgvMensagem
+            // 
+            this.dgvMensagem.BackgroundColor = System.Drawing.SystemColors.ControlText;
+            this.dgvMensagem.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvMensagem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMensagem.GridColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dgvMensagem.Location = new System.Drawing.Point(726, 88);
+            this.dgvMensagem.Name = "dgvMensagem";
+            this.dgvMensagem.Size = new System.Drawing.Size(435, 218);
+            this.dgvMensagem.TabIndex = 28;
+            // 
+            // lblEstoque
+            // 
+            this.lblEstoque.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
+            this.lblEstoque.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEstoque.ForeColor = System.Drawing.Color.Black;
+            this.lblEstoque.Location = new System.Drawing.Point(717, 330);
+            this.lblEstoque.Name = "lblEstoque";
+            this.lblEstoque.Size = new System.Drawing.Size(451, 37);
+            this.lblEstoque.TabIndex = 29;
+            this.lblEstoque.Text = "ESTOQUE";
+            this.lblEstoque.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // dvgEstoque
+            // 
+            this.dvgEstoque.BackgroundColor = System.Drawing.SystemColors.ControlText;
+            this.dvgEstoque.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dvgEstoque.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dvgEstoque.GridColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dvgEstoque.Location = new System.Drawing.Point(726, 367);
+            this.dvgEstoque.Name = "dvgEstoque";
+            this.dvgEstoque.Size = new System.Drawing.Size(435, 270);
+            this.dvgEstoque.TabIndex = 30;
+            // 
+            // menuprincipal
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
+            this.ClientSize = new System.Drawing.Size(1230, 665);
+            this.Controls.Add(this.pnlmenuPR);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Name = "menuprincipal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "menuprincipal";
+            this.pnlmenuPR.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctFechaMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMensagem)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dvgEstoque)).EndInit();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Panel pnlmenuPR;
+        private System.Windows.Forms.PictureBox pctFechaMenu;
+        private System.Windows.Forms.FontDialog fontDialog1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lblNumfuncionario;
+        private System.Windows.Forms.Label lblfuncionrios;
+        private System.Windows.Forms.Label lblNumCliente;
+        private System.Windows.Forms.Label lblClientes;
+        private System.Windows.Forms.Label lblCompras;
+        private System.Windows.Forms.Label lblNumCompra;
+        private System.Windows.Forms.Label lblfornecedor;
+        private System.Windows.Forms.Label lblNumFornecedor;
+        private System.Windows.Forms.Button btnFuncionarios;
+        private System.Windows.Forms.Button btnCompras;
+        private System.Windows.Forms.Button btnProdutos;
+        private System.Windows.Forms.Button btnEmail;
+        private System.Windows.Forms.Button btnFornecedores;
+        private System.Windows.Forms.Button btnClientes;
+        private System.Windows.Forms.Label lblMensagens;
+        private System.Windows.Forms.DataGridView dvgEstoque;
+        private System.Windows.Forms.Label lblEstoque;
+        private System.Windows.Forms.DataGridView dgvMensagem;
+    }
+}
