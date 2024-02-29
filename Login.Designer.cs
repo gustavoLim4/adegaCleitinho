@@ -39,7 +39,7 @@
             this.txtSenha = new System.Windows.Forms.TextBox();
             this.pctSenha = new System.Windows.Forms.PictureBox();
             this.btnEntraLG = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pctFecharLogin = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlFundo.SuspendLayout();
             this.pnlFundo2.SuspendLayout();
@@ -49,7 +49,7 @@
             this.pnlSenha.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctMostrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctSenha)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctFecharLogin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -184,17 +184,17 @@
             this.btnEntraLG.UseVisualStyleBackColor = false;
             this.btnEntraLG.Click += new System.EventHandler(this.btnEntraLG_Click);
             // 
-            // pictureBox2
+            // pctFecharLogin
             // 
-            this.pictureBox2.Image = global::adegaCleitinho.Properties.Resources.fechar_menu;
-            this.pictureBox2.Location = new System.Drawing.Point(944, 21);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(34, 39);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 2;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            this.pctFecharLogin.Image = global::adegaCleitinho.Properties.Resources.fechar_menu;
+            this.pctFecharLogin.Location = new System.Drawing.Point(944, 21);
+            this.pctFecharLogin.Margin = new System.Windows.Forms.Padding(2);
+            this.pctFecharLogin.Name = "pctFecharLogin";
+            this.pctFecharLogin.Size = new System.Drawing.Size(34, 39);
+            this.pctFecharLogin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pctFecharLogin.TabIndex = 2;
+            this.pctFecharLogin.TabStop = false;
+            this.pctFecharLogin.Click += new System.EventHandler(this.pctFecharLogin_Click);
             // 
             // pictureBox1
             // 
@@ -216,7 +216,7 @@
             this.Controls.Add(this.btnEntraLG);
             this.Controls.Add(this.pnlSenha);
             this.Controls.Add(this.pnlEmail);
-            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pctFecharLogin);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pnlFundo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -234,7 +234,7 @@
             this.pnlSenha.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctMostrar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctSenha)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctFecharLogin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -245,7 +245,7 @@
         private System.Windows.Forms.Panel pnlFundo;
         private System.Windows.Forms.Panel pnlFundo2;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pctFecharLogin;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Panel pnlEmail;
         private System.Windows.Forms.TextBox txtEmail;

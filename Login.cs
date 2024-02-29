@@ -20,19 +20,21 @@ namespace adegaCleitinho
             InitializeComponent();
         }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
+
+        private void btnEntraLG_Click(object sender, EventArgs e)
+        {
+            variaveis.usuario = txtEmail.Text;
+            new menuprincipal().Show();
+            Hide();
+        }
+
+        private void pctFecharLogin_Click(object sender, EventArgs e)
         {
             var resposta = MessageBox.Show("deseja sair ", "ENCERRAR", MessageBoxButtons.YesNo);
             if (resposta == DialogResult.Yes)
             {
                 Application.Exit();
             }
-        }
-
-        private void btnEntraLG_Click(object sender, EventArgs e)
-        {
-            new menuprincipal().Show();
-            Hide();
         }
 
         private void txtEmail_KeyPress(object sender, KeyPressEventArgs e)
@@ -70,5 +72,7 @@ namespace adegaCleitinho
                 mostrar = 0;
             }
         }
+
+      
     }
 }

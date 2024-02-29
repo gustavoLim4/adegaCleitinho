@@ -15,6 +15,13 @@ namespace adegaCleitinho
         public menuprincipal()
         {
             InitializeComponent();
+            lblusuario.Text = variaveis.usuario;
+            lbldata.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            timer1.Start();
+        }
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            lblhora.Text = DateTime.Now.ToString("HH:mm:ss");
         }
 
         private void pctFechaMenu_Click(object sender, EventArgs e)
@@ -31,24 +38,59 @@ namespace adegaCleitinho
             }
         }
 
-        private void lblNumInstrutor_Click(object sender, EventArgs e)
-        {
 
+        private void menuprincipal_Load(object sender, EventArgs e)
+        {
+            banco.carregarFuncionario();
+            lblNumfuncionario.Text = variaveis.qtdeFuncionario.ToString();
+
+            banco.carregarFornecedores();
+            lblNumFornecedor.Text = variaveis.qtdeFornecedores.ToString();
+
+            banco.carregarClientes();
+            lblNumCliente.Text = variaveis.qtdeCliente.ToString();
+
+            banco.dgContato = dgvMensagem;
+            banco.CarregaContato();
+
+            banco.dgEstoque = dgvEstoque;
+            banco.CarregaEstoque();
         }
 
-        private void pnlmenuPR_Paint(object sender, PaintEventArgs e)
+        private void btnFuncionarios_Click(object sender, EventArgs e)
         {
-
+            new funcionario().Show();
+            Hide();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnClientes_Click(object sender, EventArgs e)
         {
-
+            new clientesbtn().Show();
+            Hide();
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void btnFornecedores_Click(object sender, EventArgs e)
         {
+            new Fornecedores().Show();
+            Hide();
+        }
 
+        private void btnEmail_Click(object sender, EventArgs e)
+        {
+            new Email().Show();
+            Hide();
+        }
+
+        private void btnProdutos_Click(object sender, EventArgs e)
+        {
+            new Produtos().Show();
+            Hide();
+        }
+
+        private void btnCompras_Click(object sender, EventArgs e)
+        {
+            new compras().Show();
+            Hide();
         }
     }
     

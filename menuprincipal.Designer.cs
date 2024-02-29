@@ -28,39 +28,53 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlmenuPR = new System.Windows.Forms.Panel();
+            this.dgvEstoque = new System.Windows.Forms.DataGridView();
+            this.lblhora = new System.Windows.Forms.Label();
+            this.lbldata = new System.Windows.Forms.Label();
+            this.lblusuario = new System.Windows.Forms.Label();
+            this.lblEstoque = new System.Windows.Forms.Label();
+            this.dgvMensagem = new System.Windows.Forms.DataGridView();
+            this.lblMensagens = new System.Windows.Forms.Label();
+            this.lblCliente = new System.Windows.Forms.Label();
             this.lblNumCliente = new System.Windows.Forms.Label();
-            this.lblClientes = new System.Windows.Forms.Label();
             this.lblCompras = new System.Windows.Forms.Label();
             this.lblNumCompra = new System.Windows.Forms.Label();
             this.lblfornecedor = new System.Windows.Forms.Label();
+            this.lblNumFornecedor = new System.Windows.Forms.Label();
             this.lblfuncionrios = new System.Windows.Forms.Label();
             this.lblNumfuncionario = new System.Windows.Forms.Label();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pctFechaMenu = new System.Windows.Forms.PictureBox();
-            this.lblNumFornecedor = new System.Windows.Forms.Label();
-            this.btnFuncionarios = new System.Windows.Forms.Button();
-            this.btnClientes = new System.Windows.Forms.Button();
-            this.btnFornecedores = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.btnCompras = new System.Windows.Forms.Button();
             this.btnProdutos = new System.Windows.Forms.Button();
             this.btnEmail = new System.Windows.Forms.Button();
-            this.lblMensagens = new System.Windows.Forms.Label();
-            this.dgvMensagem = new System.Windows.Forms.DataGridView();
-            this.lblEstoque = new System.Windows.Forms.Label();
-            this.dvgEstoque = new System.Windows.Forms.DataGridView();
+            this.btnFornecedores = new System.Windows.Forms.Button();
+            this.btnClientes = new System.Windows.Forms.Button();
+            this.btnFuncionarios = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pctFechaMenu = new System.Windows.Forms.PictureBox();
             this.pnlmenuPR.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEstoque)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMensagem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctFechaMenu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMensagem)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dvgEstoque)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlmenuPR
             // 
             this.pnlmenuPR.BackColor = System.Drawing.Color.Black;
-            this.pnlmenuPR.Controls.Add(this.dvgEstoque);
+            this.pnlmenuPR.Controls.Add(this.dgvEstoque);
+            this.pnlmenuPR.Controls.Add(this.lblhora);
+            this.pnlmenuPR.Controls.Add(this.lbldata);
+            this.pnlmenuPR.Controls.Add(this.lblusuario);
             this.pnlmenuPR.Controls.Add(this.lblEstoque);
             this.pnlmenuPR.Controls.Add(this.dgvMensagem);
             this.pnlmenuPR.Controls.Add(this.lblMensagens);
@@ -70,8 +84,8 @@
             this.pnlmenuPR.Controls.Add(this.btnFornecedores);
             this.pnlmenuPR.Controls.Add(this.btnClientes);
             this.pnlmenuPR.Controls.Add(this.btnFuncionarios);
+            this.pnlmenuPR.Controls.Add(this.lblCliente);
             this.pnlmenuPR.Controls.Add(this.lblNumCliente);
-            this.pnlmenuPR.Controls.Add(this.lblClientes);
             this.pnlmenuPR.Controls.Add(this.lblCompras);
             this.pnlmenuPR.Controls.Add(this.lblNumCompra);
             this.pnlmenuPR.Controls.Add(this.lblfornecedor);
@@ -81,39 +95,187 @@
             this.pnlmenuPR.Controls.Add(this.pictureBox1);
             this.pnlmenuPR.Controls.Add(this.pctFechaMenu);
             this.pnlmenuPR.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pnlmenuPR.Location = new System.Drawing.Point(5, 5);
+            this.pnlmenuPR.Location = new System.Drawing.Point(4, 5);
             this.pnlmenuPR.Name = "pnlmenuPR";
             this.pnlmenuPR.Size = new System.Drawing.Size(1222, 655);
             this.pnlmenuPR.TabIndex = 0;
-            this.pnlmenuPR.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlmenuPR_Paint);
+            // 
+            // dgvEstoque
+            // 
+            this.dgvEstoque.AllowUserToAddRows = false;
+            this.dgvEstoque.AllowUserToDeleteRows = false;
+            this.dgvEstoque.AllowUserToResizeColumns = false;
+            this.dgvEstoque.AllowUserToResizeRows = false;
+            this.dgvEstoque.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvEstoque.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvEstoque.BackgroundColor = System.Drawing.SystemColors.ControlText;
+            this.dgvEstoque.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle19.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvEstoque.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            this.dgvEstoque.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvEstoque.Cursor = System.Windows.Forms.Cursors.SizeNS;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvEstoque.DefaultCellStyle = dataGridViewCellStyle20;
+            this.dgvEstoque.EnableHeadersVisualStyles = false;
+            this.dgvEstoque.GridColor = System.Drawing.Color.White;
+            this.dgvEstoque.Location = new System.Drawing.Point(712, 401);
+            this.dgvEstoque.Name = "dgvEstoque";
+            this.dgvEstoque.ReadOnly = true;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle21.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvEstoque.RowHeadersDefaultCellStyle = dataGridViewCellStyle21;
+            this.dgvEstoque.RowHeadersVisible = false;
+            this.dgvEstoque.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvEstoque.Size = new System.Drawing.Size(450, 194);
+            this.dgvEstoque.TabIndex = 34;
+            // 
+            // lblhora
+            // 
+            this.lblhora.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
+            this.lblhora.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblhora.ForeColor = System.Drawing.Color.Black;
+            this.lblhora.Location = new System.Drawing.Point(867, 38);
+            this.lblhora.Name = "lblhora";
+            this.lblhora.Size = new System.Drawing.Size(261, 37);
+            this.lblhora.TabIndex = 33;
+            this.lblhora.Text = "00:00";
+            this.lblhora.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbldata
+            // 
+            this.lbldata.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
+            this.lbldata.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbldata.ForeColor = System.Drawing.Color.Black;
+            this.lbldata.Location = new System.Drawing.Point(574, 38);
+            this.lbldata.Name = "lbldata";
+            this.lbldata.Size = new System.Drawing.Size(261, 37);
+            this.lbldata.TabIndex = 32;
+            this.lbldata.Text = "00/00/0000";
+            this.lbldata.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblusuario
+            // 
+            this.lblusuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
+            this.lblusuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblusuario.ForeColor = System.Drawing.Color.Black;
+            this.lblusuario.Location = new System.Drawing.Point(284, 38);
+            this.lblusuario.Name = "lblusuario";
+            this.lblusuario.Size = new System.Drawing.Size(261, 37);
+            this.lblusuario.TabIndex = 31;
+            this.lblusuario.Text = "USUÁRIO";
+            this.lblusuario.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblEstoque
+            // 
+            this.lblEstoque.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
+            this.lblEstoque.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEstoque.ForeColor = System.Drawing.Color.Black;
+            this.lblEstoque.Location = new System.Drawing.Point(711, 363);
+            this.lblEstoque.Name = "lblEstoque";
+            this.lblEstoque.Size = new System.Drawing.Size(451, 38);
+            this.lblEstoque.TabIndex = 29;
+            this.lblEstoque.Text = "ESTOQUE";
+            this.lblEstoque.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // dgvMensagem
+            // 
+            this.dgvMensagem.AllowUserToAddRows = false;
+            this.dgvMensagem.AllowUserToDeleteRows = false;
+            this.dgvMensagem.AllowUserToResizeColumns = false;
+            this.dgvMensagem.AllowUserToResizeRows = false;
+            this.dgvMensagem.BackgroundColor = System.Drawing.SystemColors.ControlText;
+            this.dgvMensagem.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle22.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMensagem.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
+            this.dgvMensagem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle23.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvMensagem.DefaultCellStyle = dataGridViewCellStyle23;
+            this.dgvMensagem.EnableHeadersVisualStyles = false;
+            this.dgvMensagem.GridColor = System.Drawing.Color.White;
+            this.dgvMensagem.Location = new System.Drawing.Point(710, 151);
+            this.dgvMensagem.Name = "dgvMensagem";
+            this.dgvMensagem.ReadOnly = true;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle24.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMensagem.RowHeadersDefaultCellStyle = dataGridViewCellStyle24;
+            this.dgvMensagem.RowHeadersVisible = false;
+            this.dgvMensagem.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvMensagem.Size = new System.Drawing.Size(450, 194);
+            this.dgvMensagem.TabIndex = 28;
+            // 
+            // lblMensagens
+            // 
+            this.lblMensagens.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
+            this.lblMensagens.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMensagens.ForeColor = System.Drawing.Color.Black;
+            this.lblMensagens.Location = new System.Drawing.Point(710, 116);
+            this.lblMensagens.Name = "lblMensagens";
+            this.lblMensagens.Size = new System.Drawing.Size(451, 39);
+            this.lblMensagens.TabIndex = 27;
+            this.lblMensagens.Text = "ÚLTIMAS MENSAGENS";
+            this.lblMensagens.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblCliente
+            // 
+            this.lblCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
+            this.lblCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCliente.ForeColor = System.Drawing.Color.Black;
+            this.lblCliente.Location = new System.Drawing.Point(25, 210);
+            this.lblCliente.Name = "lblCliente";
+            this.lblCliente.Size = new System.Drawing.Size(306, 37);
+            this.lblCliente.TabIndex = 13;
+            this.lblCliente.Text = "CLIENTES";
+            this.lblCliente.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblNumCliente
             // 
-            this.lblNumCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
-            this.lblNumCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumCliente.ForeColor = System.Drawing.Color.Black;
-            this.lblNumCliente.Location = new System.Drawing.Point(25, 210);
+            this.lblNumCliente.BackColor = System.Drawing.Color.Black;
+            this.lblNumCliente.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblNumCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblNumCliente.Font = new System.Drawing.Font("Britannic Bold", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(223)))), ((int)(((byte)(76)))));
+            this.lblNumCliente.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblNumCliente.Location = new System.Drawing.Point(25, 242);
             this.lblNumCliente.Name = "lblNumCliente";
-            this.lblNumCliente.Size = new System.Drawing.Size(306, 37);
-            this.lblNumCliente.TabIndex = 13;
-            this.lblNumCliente.Text = "CLIENTES";
+            this.lblNumCliente.Size = new System.Drawing.Size(306, 48);
+            this.lblNumCliente.TabIndex = 12;
+            this.lblNumCliente.Text = "000";
             this.lblNumCliente.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblClientes
-            // 
-            this.lblClientes.BackColor = System.Drawing.Color.Black;
-            this.lblClientes.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblClientes.Font = new System.Drawing.Font("Britannic Bold", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClientes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(223)))), ((int)(((byte)(76)))));
-            this.lblClientes.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.lblClientes.Location = new System.Drawing.Point(25, 242);
-            this.lblClientes.Name = "lblClientes";
-            this.lblClientes.Size = new System.Drawing.Size(306, 48);
-            this.lblClientes.TabIndex = 12;
-            this.lblClientes.Text = "000";
-            this.lblClientes.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblClientes.UseMnemonic = false;
+            this.lblNumCliente.UseMnemonic = false;
             // 
             // lblCompras
             // 
@@ -155,6 +317,22 @@
             this.lblfornecedor.Text = "FORNECEDOR";
             this.lblfornecedor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // lblNumFornecedor
+            // 
+            this.lblNumFornecedor.BackColor = System.Drawing.Color.Black;
+            this.lblNumFornecedor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblNumFornecedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblNumFornecedor.Font = new System.Drawing.Font("Britannic Bold", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumFornecedor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(223)))), ((int)(((byte)(76)))));
+            this.lblNumFornecedor.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblNumFornecedor.Location = new System.Drawing.Point(362, 151);
+            this.lblNumFornecedor.Name = "lblNumFornecedor";
+            this.lblNumFornecedor.Size = new System.Drawing.Size(292, 47);
+            this.lblNumFornecedor.TabIndex = 8;
+            this.lblNumFornecedor.Text = "000";
+            this.lblNumFornecedor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblNumFornecedor.UseMnemonic = false;
+            // 
             // lblfuncionrios
             // 
             this.lblfuncionrios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
@@ -181,7 +359,106 @@
             this.lblNumfuncionario.Text = "000";
             this.lblNumfuncionario.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblNumfuncionario.UseMnemonic = false;
-            this.lblNumfuncionario.Click += new System.EventHandler(this.lblNumInstrutor_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // btnCompras
+            // 
+            this.btnCompras.BackColor = System.Drawing.Color.Black;
+            this.btnCompras.BackgroundImage = global::adegaCleitinho.Properties.Resources.Group_5;
+            this.btnCompras.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnCompras.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnCompras.FlatAppearance.BorderSize = 0;
+            this.btnCompras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCompras.ImageKey = "(nenhum/a)";
+            this.btnCompras.Location = new System.Drawing.Point(468, 480);
+            this.btnCompras.Name = "btnCompras";
+            this.btnCompras.Size = new System.Drawing.Size(172, 157);
+            this.btnCompras.TabIndex = 26;
+            this.btnCompras.UseVisualStyleBackColor = false;
+            this.btnCompras.Click += new System.EventHandler(this.btnCompras_Click);
+            // 
+            // btnProdutos
+            // 
+            this.btnProdutos.BackColor = System.Drawing.Color.Black;
+            this.btnProdutos.BackgroundImage = global::adegaCleitinho.Properties.Resources.Group_1;
+            this.btnProdutos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnProdutos.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnProdutos.FlatAppearance.BorderSize = 0;
+            this.btnProdutos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProdutos.ImageKey = "(nenhum/a)";
+            this.btnProdutos.Location = new System.Drawing.Point(243, 480);
+            this.btnProdutos.Name = "btnProdutos";
+            this.btnProdutos.Size = new System.Drawing.Size(172, 157);
+            this.btnProdutos.TabIndex = 25;
+            this.btnProdutos.UseVisualStyleBackColor = false;
+            this.btnProdutos.Click += new System.EventHandler(this.btnProdutos_Click);
+            // 
+            // btnEmail
+            // 
+            this.btnEmail.BackColor = System.Drawing.Color.Black;
+            this.btnEmail.BackgroundImage = global::adegaCleitinho.Properties.Resources.Group_4;
+            this.btnEmail.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnEmail.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnEmail.FlatAppearance.BorderSize = 0;
+            this.btnEmail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEmail.ImageKey = "(nenhum/a)";
+            this.btnEmail.Location = new System.Drawing.Point(30, 480);
+            this.btnEmail.Name = "btnEmail";
+            this.btnEmail.Size = new System.Drawing.Size(172, 157);
+            this.btnEmail.TabIndex = 24;
+            this.btnEmail.UseVisualStyleBackColor = false;
+            this.btnEmail.Click += new System.EventHandler(this.btnEmail_Click);
+            // 
+            // btnFornecedores
+            // 
+            this.btnFornecedores.BackColor = System.Drawing.Color.Black;
+            this.btnFornecedores.BackgroundImage = global::adegaCleitinho.Properties.Resources.Group_6;
+            this.btnFornecedores.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnFornecedores.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnFornecedores.FlatAppearance.BorderSize = 0;
+            this.btnFornecedores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFornecedores.ImageKey = "(nenhum/a)";
+            this.btnFornecedores.Location = new System.Drawing.Point(468, 304);
+            this.btnFornecedores.Name = "btnFornecedores";
+            this.btnFornecedores.Size = new System.Drawing.Size(172, 157);
+            this.btnFornecedores.TabIndex = 23;
+            this.btnFornecedores.UseVisualStyleBackColor = false;
+            this.btnFornecedores.Click += new System.EventHandler(this.btnFornecedores_Click);
+            // 
+            // btnClientes
+            // 
+            this.btnClientes.BackColor = System.Drawing.Color.Black;
+            this.btnClientes.BackgroundImage = global::adegaCleitinho.Properties.Resources.Group_3;
+            this.btnClientes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnClientes.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnClientes.FlatAppearance.BorderSize = 0;
+            this.btnClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClientes.ImageKey = "(nenhum/a)";
+            this.btnClientes.Location = new System.Drawing.Point(243, 304);
+            this.btnClientes.Name = "btnClientes";
+            this.btnClientes.Size = new System.Drawing.Size(172, 157);
+            this.btnClientes.TabIndex = 22;
+            this.btnClientes.UseVisualStyleBackColor = false;
+            this.btnClientes.Click += new System.EventHandler(this.btnClientes_Click);
+            // 
+            // btnFuncionarios
+            // 
+            this.btnFuncionarios.BackColor = System.Drawing.Color.Black;
+            this.btnFuncionarios.BackgroundImage = global::adegaCleitinho.Properties.Resources.Group_2;
+            this.btnFuncionarios.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnFuncionarios.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnFuncionarios.FlatAppearance.BorderSize = 0;
+            this.btnFuncionarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFuncionarios.ImageKey = "(nenhum/a)";
+            this.btnFuncionarios.Location = new System.Drawing.Point(30, 304);
+            this.btnFuncionarios.Name = "btnFuncionarios";
+            this.btnFuncionarios.Size = new System.Drawing.Size(172, 157);
+            this.btnFuncionarios.TabIndex = 20;
+            this.btnFuncionarios.UseVisualStyleBackColor = false;
+            this.btnFuncionarios.Click += new System.EventHandler(this.btnFuncionarios_Click);
             // 
             // pictureBox1
             // 
@@ -204,158 +481,6 @@
             this.pctFechaMenu.TabStop = false;
             this.pctFechaMenu.Click += new System.EventHandler(this.pctFechaMenu_Click);
             // 
-            // lblNumFornecedor
-            // 
-            this.lblNumFornecedor.BackColor = System.Drawing.Color.Black;
-            this.lblNumFornecedor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblNumFornecedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblNumFornecedor.Font = new System.Drawing.Font("Britannic Bold", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumFornecedor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(223)))), ((int)(((byte)(76)))));
-            this.lblNumFornecedor.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.lblNumFornecedor.Location = new System.Drawing.Point(362, 151);
-            this.lblNumFornecedor.Name = "lblNumFornecedor";
-            this.lblNumFornecedor.Size = new System.Drawing.Size(292, 47);
-            this.lblNumFornecedor.TabIndex = 8;
-            this.lblNumFornecedor.Text = "000";
-            this.lblNumFornecedor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblNumFornecedor.UseMnemonic = false;
-            // 
-            // btnFuncionarios
-            // 
-            this.btnFuncionarios.BackColor = System.Drawing.Color.Black;
-            this.btnFuncionarios.BackgroundImage = global::adegaCleitinho.Properties.Resources.Group_2;
-            this.btnFuncionarios.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnFuncionarios.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnFuncionarios.FlatAppearance.BorderSize = 0;
-            this.btnFuncionarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFuncionarios.ImageKey = "(nenhum/a)";
-            this.btnFuncionarios.Location = new System.Drawing.Point(30, 304);
-            this.btnFuncionarios.Name = "btnFuncionarios";
-            this.btnFuncionarios.Size = new System.Drawing.Size(172, 157);
-            this.btnFuncionarios.TabIndex = 20;
-            this.btnFuncionarios.UseVisualStyleBackColor = false;
-            // 
-            // btnClientes
-            // 
-            this.btnClientes.BackColor = System.Drawing.Color.Black;
-            this.btnClientes.BackgroundImage = global::adegaCleitinho.Properties.Resources.Group_3;
-            this.btnClientes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnClientes.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnClientes.FlatAppearance.BorderSize = 0;
-            this.btnClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClientes.ImageKey = "(nenhum/a)";
-            this.btnClientes.Location = new System.Drawing.Point(243, 304);
-            this.btnClientes.Name = "btnClientes";
-            this.btnClientes.Size = new System.Drawing.Size(172, 157);
-            this.btnClientes.TabIndex = 22;
-            this.btnClientes.UseVisualStyleBackColor = false;
-            // 
-            // btnFornecedores
-            // 
-            this.btnFornecedores.BackColor = System.Drawing.Color.Black;
-            this.btnFornecedores.BackgroundImage = global::adegaCleitinho.Properties.Resources.Group_6;
-            this.btnFornecedores.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnFornecedores.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnFornecedores.FlatAppearance.BorderSize = 0;
-            this.btnFornecedores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFornecedores.ImageKey = "(nenhum/a)";
-            this.btnFornecedores.Location = new System.Drawing.Point(468, 304);
-            this.btnFornecedores.Name = "btnFornecedores";
-            this.btnFornecedores.Size = new System.Drawing.Size(172, 157);
-            this.btnFornecedores.TabIndex = 23;
-            this.btnFornecedores.UseVisualStyleBackColor = false;
-            // 
-            // btnCompras
-            // 
-            this.btnCompras.BackColor = System.Drawing.Color.Black;
-            this.btnCompras.BackgroundImage = global::adegaCleitinho.Properties.Resources.Group_5;
-            this.btnCompras.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnCompras.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnCompras.FlatAppearance.BorderSize = 0;
-            this.btnCompras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCompras.ImageKey = "(nenhum/a)";
-            this.btnCompras.Location = new System.Drawing.Point(468, 480);
-            this.btnCompras.Name = "btnCompras";
-            this.btnCompras.Size = new System.Drawing.Size(172, 157);
-            this.btnCompras.TabIndex = 26;
-            this.btnCompras.UseVisualStyleBackColor = false;
-            // 
-            // btnProdutos
-            // 
-            this.btnProdutos.BackColor = System.Drawing.Color.Black;
-            this.btnProdutos.BackgroundImage = global::adegaCleitinho.Properties.Resources.Group_1;
-            this.btnProdutos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnProdutos.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnProdutos.FlatAppearance.BorderSize = 0;
-            this.btnProdutos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProdutos.ImageKey = "(nenhum/a)";
-            this.btnProdutos.Location = new System.Drawing.Point(243, 480);
-            this.btnProdutos.Name = "btnProdutos";
-            this.btnProdutos.Size = new System.Drawing.Size(172, 157);
-            this.btnProdutos.TabIndex = 25;
-            this.btnProdutos.UseVisualStyleBackColor = false;
-            // 
-            // btnEmail
-            // 
-            this.btnEmail.BackColor = System.Drawing.Color.Black;
-            this.btnEmail.BackgroundImage = global::adegaCleitinho.Properties.Resources.Group_4;
-            this.btnEmail.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnEmail.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnEmail.FlatAppearance.BorderSize = 0;
-            this.btnEmail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEmail.ImageKey = "(nenhum/a)";
-            this.btnEmail.Location = new System.Drawing.Point(30, 480);
-            this.btnEmail.Name = "btnEmail";
-            this.btnEmail.Size = new System.Drawing.Size(172, 157);
-            this.btnEmail.TabIndex = 24;
-            this.btnEmail.UseVisualStyleBackColor = false;
-            // 
-            // lblMensagens
-            // 
-            this.lblMensagens.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
-            this.lblMensagens.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMensagens.ForeColor = System.Drawing.Color.Black;
-            this.lblMensagens.Location = new System.Drawing.Point(717, 51);
-            this.lblMensagens.Name = "lblMensagens";
-            this.lblMensagens.Size = new System.Drawing.Size(451, 37);
-            this.lblMensagens.TabIndex = 27;
-            this.lblMensagens.Text = "ÚLTIMAS MENSAGENS";
-            this.lblMensagens.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // dgvMensagem
-            // 
-            this.dgvMensagem.BackgroundColor = System.Drawing.SystemColors.ControlText;
-            this.dgvMensagem.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dgvMensagem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMensagem.GridColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dgvMensagem.Location = new System.Drawing.Point(726, 88);
-            this.dgvMensagem.Name = "dgvMensagem";
-            this.dgvMensagem.Size = new System.Drawing.Size(435, 218);
-            this.dgvMensagem.TabIndex = 28;
-            // 
-            // lblEstoque
-            // 
-            this.lblEstoque.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
-            this.lblEstoque.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEstoque.ForeColor = System.Drawing.Color.Black;
-            this.lblEstoque.Location = new System.Drawing.Point(717, 330);
-            this.lblEstoque.Name = "lblEstoque";
-            this.lblEstoque.Size = new System.Drawing.Size(451, 37);
-            this.lblEstoque.TabIndex = 29;
-            this.lblEstoque.Text = "ESTOQUE";
-            this.lblEstoque.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // dvgEstoque
-            // 
-            this.dvgEstoque.BackgroundColor = System.Drawing.SystemColors.ControlText;
-            this.dvgEstoque.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dvgEstoque.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dvgEstoque.GridColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dvgEstoque.Location = new System.Drawing.Point(726, 367);
-            this.dvgEstoque.Name = "dvgEstoque";
-            this.dvgEstoque.Size = new System.Drawing.Size(435, 270);
-            this.dvgEstoque.TabIndex = 30;
-            // 
             // menuprincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -367,11 +492,12 @@
             this.Name = "menuprincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "menuprincipal";
+            this.Load += new System.EventHandler(this.menuprincipal_Load);
             this.pnlmenuPR.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEstoque)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMensagem)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctFechaMenu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMensagem)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dvgEstoque)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -384,8 +510,8 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblNumfuncionario;
         private System.Windows.Forms.Label lblfuncionrios;
+        private System.Windows.Forms.Label lblCliente;
         private System.Windows.Forms.Label lblNumCliente;
-        private System.Windows.Forms.Label lblClientes;
         private System.Windows.Forms.Label lblCompras;
         private System.Windows.Forms.Label lblNumCompra;
         private System.Windows.Forms.Label lblfornecedor;
@@ -397,8 +523,12 @@
         private System.Windows.Forms.Button btnFornecedores;
         private System.Windows.Forms.Button btnClientes;
         private System.Windows.Forms.Label lblMensagens;
-        private System.Windows.Forms.DataGridView dvgEstoque;
         private System.Windows.Forms.Label lblEstoque;
         private System.Windows.Forms.DataGridView dgvMensagem;
+        private System.Windows.Forms.Label lblusuario;
+        private System.Windows.Forms.Label lblhora;
+        private System.Windows.Forms.Label lbldata;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.DataGridView dgvEstoque;
     }
 }
