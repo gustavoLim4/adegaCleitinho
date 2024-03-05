@@ -50,11 +50,18 @@ namespace adegaCleitinho
             banco.carregarClientes();
             lblNumCliente.Text = variaveis.qtdeCliente.ToString();
 
+            banco.carregarCompras();
+            lblNumCompra.Text = variaveis.somageralCompras.ToString("N2"); //n2 para as casa decimal
+
+
             banco.dgContato = dgvMensagem;
             banco.CarregaContato();
 
             banco.dgEstoque = dgvEstoque;
             banco.CarregaEstoque();
+            
+
+          
         }
 
         private void btnFuncionarios_Click(object sender, EventArgs e)
@@ -65,13 +72,13 @@ namespace adegaCleitinho
 
         private void btnClientes_Click(object sender, EventArgs e)
         {
-            new clientesbtn().Show();
+            new clientes().Show();
             Hide();
         }
 
         private void btnFornecedores_Click(object sender, EventArgs e)
         {
-            new Fornecedores().Show();
+            new Fornecedor().Show();
             Hide();
         }
 
@@ -89,9 +96,11 @@ namespace adegaCleitinho
 
         private void btnCompras_Click(object sender, EventArgs e)
         {
-            new compras().Show();
+            new compra().Show();
             Hide();
         }
+
+     
     }
     
 }

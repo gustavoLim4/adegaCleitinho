@@ -22,5 +22,35 @@ namespace adegaCleitinho
             new menuprincipal().Show();
             Hide();
         }
+
+        private void Email_Load(object sender, EventArgs e)
+        {
+            banco.dgEmail = dgvEmail;
+            banco.CarregarEmail();
+        }
+
+        private void cbxEmail_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbxEmail.Checked == true)
+            {
+                banco.CarregarStatusEmail();
+                txtEmail.Enabled = false;
+            }
+            else
+            {
+                banco.CarregarEmail();
+                txtEmail.Enabled = true;
+            }
+        }
+
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+            variaveis.nomeContato = txtEmail.Text;
+            banco.CarregarEmailNome();
+            if (txtEmail.Text == "")
+            {
+                cbxEmail.Checked = true;
+            }
+        }
     }
 }

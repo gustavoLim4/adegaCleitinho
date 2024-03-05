@@ -10,22 +10,23 @@ using System.Windows.Forms;
 
 namespace adegaCleitinho
 {
-    public partial class Fornecedores : Form
+    public partial class compra : Form
     {
-        public Fornecedores()
+        public compra()
         {
             InitializeComponent();
         }
 
-        private void pctVoltaFornecedores_Click(object sender, EventArgs e)
+        private void pctVoltaCompras_Click(object sender, EventArgs e)
         {
             new menuprincipal().Show();
-            Hide();
+            Hide(); 
         }
 
-    
-
-      
-
+        private void compra_Load(object sender, EventArgs e)
+        {
+            banco.dgCompra = dgvCompras;
+            banco.CarregarCompra();
+        }
     }
 }

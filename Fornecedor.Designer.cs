@@ -1,6 +1,6 @@
 ﻿namespace adegaCleitinho
 {
-    partial class Fornecedores
+    partial class Fornecedor
     {
         /// <summary>
         /// Required designer variable.
@@ -32,10 +32,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlFornecedores = new System.Windows.Forms.Panel();
+            this.dgvFornecedores = new System.Windows.Forms.DataGridView();
             this.btnAlterarFornecedores = new System.Windows.Forms.Button();
             this.btnCadastrarFornecedores = new System.Windows.Forms.Button();
             this.btnExcluirFornecedores = new System.Windows.Forms.Button();
-            this.dgvFornecedores = new System.Windows.Forms.DataGridView();
             this.pctVoltaFornecedores = new System.Windows.Forms.PictureBox();
             this.cbxFornecedores = new System.Windows.Forms.CheckBox();
             this.txtFornecedores = new System.Windows.Forms.TextBox();
@@ -51,10 +51,10 @@
             // pnlFornecedores
             // 
             this.pnlFornecedores.BackColor = System.Drawing.Color.Black;
+            this.pnlFornecedores.Controls.Add(this.dgvFornecedores);
             this.pnlFornecedores.Controls.Add(this.btnAlterarFornecedores);
             this.pnlFornecedores.Controls.Add(this.btnCadastrarFornecedores);
             this.pnlFornecedores.Controls.Add(this.btnExcluirFornecedores);
-            this.pnlFornecedores.Controls.Add(this.dgvFornecedores);
             this.pnlFornecedores.Controls.Add(this.pctVoltaFornecedores);
             this.pnlFornecedores.Controls.Add(this.cbxFornecedores);
             this.pnlFornecedores.Controls.Add(this.txtFornecedores);
@@ -65,6 +65,51 @@
             this.pnlFornecedores.Name = "pnlFornecedores";
             this.pnlFornecedores.Size = new System.Drawing.Size(1222, 655);
             this.pnlFornecedores.TabIndex = 1;
+            // 
+            // dgvFornecedores
+            // 
+            this.dgvFornecedores.AllowUserToAddRows = false;
+            this.dgvFornecedores.AllowUserToDeleteRows = false;
+            this.dgvFornecedores.AllowUserToResizeColumns = false;
+            this.dgvFornecedores.AllowUserToResizeRows = false;
+            this.dgvFornecedores.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvFornecedores.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvFornecedores.BackgroundColor = System.Drawing.SystemColors.ControlText;
+            this.dgvFornecedores.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.7F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFornecedores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvFornecedores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.5F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvFornecedores.DefaultCellStyle = dataGridViewCellStyle5;
+            this.dgvFornecedores.EnableHeadersVisualStyles = false;
+            this.dgvFornecedores.GridColor = System.Drawing.Color.White;
+            this.dgvFornecedores.Location = new System.Drawing.Point(184, 181);
+            this.dgvFornecedores.Name = "dgvFornecedores";
+            this.dgvFornecedores.ReadOnly = true;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFornecedores.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvFornecedores.RowHeadersVisible = false;
+            this.dgvFornecedores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvFornecedores.Size = new System.Drawing.Size(895, 360);
+            this.dgvFornecedores.TabIndex = 33;
             // 
             // btnAlterarFornecedores
             // 
@@ -105,49 +150,6 @@
             this.btnExcluirFornecedores.Text = "Excluir";
             this.btnExcluirFornecedores.UseVisualStyleBackColor = false;
             // 
-            // dgvFornecedores
-            // 
-            this.dgvFornecedores.AllowUserToAddRows = false;
-            this.dgvFornecedores.AllowUserToDeleteRows = false;
-            this.dgvFornecedores.AllowUserToResizeColumns = false;
-            this.dgvFornecedores.AllowUserToResizeRows = false;
-            this.dgvFornecedores.BackgroundColor = System.Drawing.SystemColors.ControlText;
-            this.dgvFornecedores.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFornecedores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvFornecedores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvFornecedores.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dgvFornecedores.EnableHeadersVisualStyles = false;
-            this.dgvFornecedores.GridColor = System.Drawing.Color.White;
-            this.dgvFornecedores.Location = new System.Drawing.Point(185, 179);
-            this.dgvFornecedores.Name = "dgvFornecedores";
-            this.dgvFornecedores.ReadOnly = true;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFornecedores.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.dgvFornecedores.RowHeadersVisible = false;
-            this.dgvFornecedores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvFornecedores.Size = new System.Drawing.Size(895, 360);
-            this.dgvFornecedores.TabIndex = 29;
-            // 
             // pctVoltaFornecedores
             // 
             this.pctVoltaFornecedores.Image = global::adegaCleitinho.Properties.Resources.voltarImagem;
@@ -170,6 +172,7 @@
             this.cbxFornecedores.TabIndex = 12;
             this.cbxFornecedores.Text = "Ativos";
             this.cbxFornecedores.UseVisualStyleBackColor = true;
+            this.cbxFornecedores.CheckedChanged += new System.EventHandler(this.cbxFornecedores_CheckedChanged);
             // 
             // txtFornecedores
             // 
@@ -178,6 +181,7 @@
             this.txtFornecedores.Name = "txtFornecedores";
             this.txtFornecedores.Size = new System.Drawing.Size(613, 26);
             this.txtFornecedores.TabIndex = 11;
+            this.txtFornecedores.TextChanged += new System.EventHandler(this.txtFornecedores_TextChanged);
             // 
             // lblNomeFornecedores
             // 
@@ -213,7 +217,7 @@
             this.pctFornecedores.TabIndex = 2;
             this.pctFornecedores.TabStop = false;
             // 
-            // Fornecedores
+            // Fornecedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -222,9 +226,10 @@
             this.Controls.Add(this.pnlFornecedores);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Location = new System.Drawing.Point(4, 5);
-            this.Name = "Fornecedores";
+            this.Name = "Fornecedor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Fornecedoresbtn";
+            this.Load += new System.EventHandler(this.Fornecedor_Load);
             this.pnlFornecedores.ResumeLayout(false);
             this.pnlFornecedores.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFornecedores)).EndInit();
@@ -240,12 +245,12 @@
         private System.Windows.Forms.Button btnAlterarFornecedores;
         private System.Windows.Forms.Button btnCadastrarFornecedores;
         private System.Windows.Forms.Button btnExcluirFornecedores;
-        private System.Windows.Forms.DataGridView dgvFornecedores;
         private System.Windows.Forms.PictureBox pctVoltaFornecedores;
         private System.Windows.Forms.CheckBox cbxFornecedores;
         private System.Windows.Forms.TextBox txtFornecedores;
         private System.Windows.Forms.Label lblNomeFornecedores;
         private System.Windows.Forms.Label lblfornecedores;
         private System.Windows.Forms.PictureBox pctFornecedores;
+        private System.Windows.Forms.DataGridView dgvFornecedores;
     }
 }

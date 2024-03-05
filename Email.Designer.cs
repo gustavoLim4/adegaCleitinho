@@ -28,33 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlEmail = new System.Windows.Forms.Panel();
             this.btnAlterarEmail = new System.Windows.Forms.Button();
             this.btnCadastrarEmail = new System.Windows.Forms.Button();
             this.btnExcluirEmail = new System.Windows.Forms.Button();
-            this.dgvEmail = new System.Windows.Forms.DataGridView();
+            this.pctVoltaEmail = new System.Windows.Forms.PictureBox();
             this.cbxEmail = new System.Windows.Forms.CheckBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.lblNomeEmail = new System.Windows.Forms.Label();
             this.lblEmail = new System.Windows.Forms.Label();
-            this.pctVoltaEmail = new System.Windows.Forms.PictureBox();
             this.pctEmail = new System.Windows.Forms.PictureBox();
+            this.dgvEmail = new System.Windows.Forms.DataGridView();
             this.pnlEmail.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEmail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctVoltaEmail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctEmail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEmail)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlEmail
             // 
             this.pnlEmail.BackColor = System.Drawing.Color.Black;
+            this.pnlEmail.Controls.Add(this.dgvEmail);
             this.pnlEmail.Controls.Add(this.btnAlterarEmail);
             this.pnlEmail.Controls.Add(this.btnCadastrarEmail);
             this.pnlEmail.Controls.Add(this.btnExcluirEmail);
-            this.pnlEmail.Controls.Add(this.dgvEmail);
             this.pnlEmail.Controls.Add(this.pctVoltaEmail);
             this.pnlEmail.Controls.Add(this.cbxEmail);
             this.pnlEmail.Controls.Add(this.txtEmail);
@@ -105,48 +105,16 @@
             this.btnExcluirEmail.Text = "Excluir";
             this.btnExcluirEmail.UseVisualStyleBackColor = false;
             // 
-            // dgvEmail
+            // pctVoltaEmail
             // 
-            this.dgvEmail.AllowUserToAddRows = false;
-            this.dgvEmail.AllowUserToDeleteRows = false;
-            this.dgvEmail.AllowUserToResizeColumns = false;
-            this.dgvEmail.AllowUserToResizeRows = false;
-            this.dgvEmail.BackgroundColor = System.Drawing.SystemColors.ControlText;
-            this.dgvEmail.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvEmail.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvEmail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvEmail.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dgvEmail.EnableHeadersVisualStyles = false;
-            this.dgvEmail.GridColor = System.Drawing.Color.White;
-            this.dgvEmail.Location = new System.Drawing.Point(185, 179);
-            this.dgvEmail.Name = "dgvEmail";
-            this.dgvEmail.ReadOnly = true;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvEmail.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.dgvEmail.RowHeadersVisible = false;
-            this.dgvEmail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvEmail.Size = new System.Drawing.Size(895, 360);
-            this.dgvEmail.TabIndex = 29;
+            this.pctVoltaEmail.Image = global::adegaCleitinho.Properties.Resources.voltarImagem;
+            this.pctVoltaEmail.Location = new System.Drawing.Point(1136, 21);
+            this.pctVoltaEmail.Name = "pctVoltaEmail";
+            this.pctVoltaEmail.Size = new System.Drawing.Size(61, 56);
+            this.pctVoltaEmail.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pctVoltaEmail.TabIndex = 13;
+            this.pctVoltaEmail.TabStop = false;
+            this.pctVoltaEmail.Click += new System.EventHandler(this.pctVoltaEmail_Click);
             // 
             // cbxEmail
             // 
@@ -159,6 +127,7 @@
             this.cbxEmail.TabIndex = 12;
             this.cbxEmail.Text = "Ativos";
             this.cbxEmail.UseVisualStyleBackColor = true;
+            this.cbxEmail.CheckedChanged += new System.EventHandler(this.cbxEmail_CheckedChanged);
             // 
             // txtEmail
             // 
@@ -167,6 +136,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(613, 26);
             this.txtEmail.TabIndex = 11;
+            this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
             // 
             // lblNomeEmail
             // 
@@ -192,17 +162,6 @@
             this.lblEmail.Text = "E-MAILS";
             this.lblEmail.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pctVoltaEmail
-            // 
-            this.pctVoltaEmail.Image = global::adegaCleitinho.Properties.Resources.voltarImagem;
-            this.pctVoltaEmail.Location = new System.Drawing.Point(1136, 21);
-            this.pctVoltaEmail.Name = "pctVoltaEmail";
-            this.pctVoltaEmail.Size = new System.Drawing.Size(61, 56);
-            this.pctVoltaEmail.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pctVoltaEmail.TabIndex = 13;
-            this.pctVoltaEmail.TabStop = false;
-            this.pctVoltaEmail.Click += new System.EventHandler(this.pctVoltaEmail_Click);
-            // 
             // pctEmail
             // 
             this.pctEmail.Image = global::adegaCleitinho.Properties.Resources.logo;
@@ -212,6 +171,51 @@
             this.pctEmail.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pctEmail.TabIndex = 2;
             this.pctEmail.TabStop = false;
+            // 
+            // dgvEmail
+            // 
+            this.dgvEmail.AllowUserToAddRows = false;
+            this.dgvEmail.AllowUserToDeleteRows = false;
+            this.dgvEmail.AllowUserToResizeColumns = false;
+            this.dgvEmail.AllowUserToResizeRows = false;
+            this.dgvEmail.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvEmail.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvEmail.BackgroundColor = System.Drawing.SystemColors.ControlText;
+            this.dgvEmail.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvEmail.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.dgvEmail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvEmail.DefaultCellStyle = dataGridViewCellStyle8;
+            this.dgvEmail.EnableHeadersVisualStyles = false;
+            this.dgvEmail.GridColor = System.Drawing.Color.White;
+            this.dgvEmail.Location = new System.Drawing.Point(184, 181);
+            this.dgvEmail.Name = "dgvEmail";
+            this.dgvEmail.ReadOnly = true;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvEmail.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            this.dgvEmail.RowHeadersVisible = false;
+            this.dgvEmail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvEmail.Size = new System.Drawing.Size(895, 360);
+            this.dgvEmail.TabIndex = 34;
             // 
             // Email
             // 
@@ -224,11 +228,12 @@
             this.Name = "Email";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Email";
+            this.Load += new System.EventHandler(this.Email_Load);
             this.pnlEmail.ResumeLayout(false);
             this.pnlEmail.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEmail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctVoltaEmail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctEmail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEmail)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -239,12 +244,12 @@
         private System.Windows.Forms.Button btnAlterarEmail;
         private System.Windows.Forms.Button btnCadastrarEmail;
         private System.Windows.Forms.Button btnExcluirEmail;
-        private System.Windows.Forms.DataGridView dgvEmail;
         private System.Windows.Forms.PictureBox pctVoltaEmail;
         private System.Windows.Forms.CheckBox cbxEmail;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label lblNomeEmail;
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.PictureBox pctEmail;
+        private System.Windows.Forms.DataGridView dgvEmail;
     }
 }

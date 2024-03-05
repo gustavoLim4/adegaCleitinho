@@ -99,17 +99,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="banco.cs" />
-    <Compile Include="clientesbtn.cs">
+    <Compile Include="clientes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="clientesbtn.Designer.cs">
-      <DependentUpon>clientesbtn.cs</DependentUpon>
+    <Compile Include="clientes.Designer.cs">
+      <DependentUpon>clientes.cs</DependentUpon>
     </Compile>
-    <Compile Include="compras.cs">
+    <Compile Include="compra.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="compras.Designer.cs">
-      <DependentUpon>compras.cs</DependentUpon>
+    <Compile Include="compra.Designer.cs">
+      <DependentUpon>compra.cs</DependentUpon>
     </Compile>
     <Compile Include="conexao.cs" />
     <Compile Include="Email.cs">
@@ -118,11 +118,11 @@
     <Compile Include="Email.Designer.cs">
       <DependentUpon>Email.cs</DependentUpon>
     </Compile>
-    <Compile Include="Fornecedores.cs">
+    <Compile Include="Fornecedor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Fornecedores.Designer.cs">
-      <DependentUpon>Fornecedores.cs</DependentUpon>
+    <Compile Include="Fornecedor.Designer.cs">
+      <DependentUpon>Fornecedor.cs</DependentUpon>
     </Compile>
     <Compile Include="funcionario.cs">
       <SubType>Form</SubType>
@@ -151,17 +151,17 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="variaveis.cs" />
-    <EmbeddedResource Include="clientesbtn.resx">
-      <DependentUpon>clientesbtn.cs</DependentUpon>
+    <EmbeddedResource Include="clientes.resx">
+      <DependentUpon>clientes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="compras.resx">
-      <DependentUpon>compras.cs</DependentUpon>
+    <EmbeddedResource Include="compra.resx">
+      <DependentUpon>compra.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Email.resx">
       <DependentUpon>Email.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Fornecedores.resx">
-      <DependentUpon>Fornecedores.cs</DependentUpon>
+    <EmbeddedResource Include="Fornecedor.resx">
+      <DependentUpon>Fornecedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="funcionario.resx">
       <DependentUpon>funcionario.cs</DependentUpon>

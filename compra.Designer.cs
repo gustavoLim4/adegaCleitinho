@@ -1,6 +1,6 @@
 ﻿namespace adegaCleitinho
 {
-    partial class compras
+    partial class compra
     {
         /// <summary>
         /// Required designer variable.
@@ -213,7 +213,7 @@
             this.pctCompras.TabIndex = 2;
             this.pctCompras.TabStop = false;
             // 
-            // compras
+            // compra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -221,9 +221,10 @@
             this.ClientSize = new System.Drawing.Size(1230, 665);
             this.Controls.Add(this.pnlCompras);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "compras";
+            this.Name = "compra";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "compras";
+            this.Load += new System.EventHandler(this.compra_Load);
             this.pnlCompras.ResumeLayout(false);
             this.pnlCompras.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCompras)).EndInit();

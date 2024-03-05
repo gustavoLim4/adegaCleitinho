@@ -23,5 +23,11 @@ namespace adegaCleitinho
             Hide();
 
         }
+
+        private void Produtos_Load(object sender, EventArgs e)
+        {
+            banco.dgProdutos = dgvProdutos;
+            banco.CarregarProdutos();
+        }
     }
 }
