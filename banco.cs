@@ -188,6 +188,34 @@ namespace adegaCleitinho
                 return true;
             }
         }
+        public static byte[] GetImgToByte(string caminhoArquivoFtp)
+        {
+            try
+            {
+                WebClient ftpclient = new WebClient();
+                ftpclient.Credentials = new NetworkCredential(variaveis.usuarioFtp, variaveis.senhaFtp);
+                byte[] imageToByte = ftpclient.DownloadData(caminhoArquivoFtp);
+                return imageToByte;
+            }
+            catch
+            {
+                WebClient ftpclient = new WebClient();
+                ftpclient.Credentials = new NetworkCredential(variaveis.usuarioFtp, variaveis.senhaFtp);
+                byte[] imageToByte = ftpclient.DownloadData(variaveis.enderecoServidorFtp + @"\funcionario\semfoto.png");
+                return imageToByte;
+            }
+        }
+
+        //Converter a imagem de Byte para IMG
+        public static Bitmap ByteToImage(byte[] blob)
+        {
+            MemoryStream mStream = new MemoryStream();
+            byte[] pData = blob;
+            mStream.Write(pData, 0, Convert.ToInt32(pData.Length));
+            Bitmap bm = new Bitmap(mStream, false);
+            mStream.Dispose();
+            return bm;
+        }
         public static void CarragarInstrutores()
         {
             try
@@ -299,7 +327,7 @@ namespace adegaCleitinho
             try
             {
                 conexao.Conectar();
-                string inserir = "INSERT INTO funcionarios(nomeFuncionario,dataNascFuncionario, cargoFuncionario, emailFuncionario, senhaFuncionario, nivelFuncionario, telefoneFuncionario, admissaoFuncionaro, statusFuncionario  ) VALUES (@nome,@dataNas,@cargo,@email,@senha,@nivel,@telefone,@dataAdm,@status);";
+                string inserir = "INSERT INTO funcionarios(nomeFuncionario,dataNascFuncionario, cargoFuncionario, emailFuncionario, senhaFuncionario, nivelFuncionario, telefoneFuncionario, admissaoFuncionaro, statusFuncionario , fotoFuncionario) VALUES (@nome,@dataNas,@cargo,@email,@senha,@nivel,@telefone,@dataAdm,@status, @foto);";
                 MySqlCommand cmd = new MySqlCommand(inserir, conexao.conn);
 
                 cmd.Parameters.AddWithValue("@nome", variaveis.nomeFuncionario);
@@ -311,7 +339,7 @@ namespace adegaCleitinho
                 cmd.Parameters.AddWithValue("@telefone", variaveis.telefoneFuncionario);
                 cmd.Parameters.AddWithValue("@dataAdm", variaveis.admissaoFuncionaro);
                 cmd.Parameters.AddWithValue("@status", variaveis.statusFuncionario);
-                //cmd.Parameters.AddWithValue("@foto", variaveis.fotoFuncionario);
+                cmd.Parameters.AddWithValue("@foto", variaveis.fotoFuncionario);
 
                 cmd.ExecuteNonQuery();
                 var resposta = MessageBox.Show("O Cadastro foi realizado com sucesso?", "Sucesso", MessageBoxButtons.OK);
@@ -345,6 +373,7 @@ namespace adegaCleitinho
                     variaveis.cargoFuncionario = reader.GetString(3);
                     variaveis.nivelFuncionario = reader.GetString(6);
                     variaveis.dataNascFuncionario = reader.GetDateTime(2);
+                    variaveis.fotoInstrutor = variaveis.fotoInstrutor.Remove(0, 12);
                     variaveis.admissaoFuncionaro = reader.GetDateTime(8);
                     variaveis.telefoneFuncionario = reader.GetString(7);
                     variaveis.statusFuncionario = reader.GetString(10);
@@ -394,7 +423,7 @@ namespace adegaCleitinho
             try
             {
                 conexao.Conectar();
-                string inserir = "UPDATE tblfuncionarios SET fotoFuncionario = @foto WHERE idFuncionario=@codigo";
+                string inserir = "UPDATE funcionarios SET fotoFuncionario = @foto WHERE idFuncionario=@codigo";
                 MySqlCommand cmd = new MySqlCommand(inserir, conexao.conn);
                 //parâmetros
                 cmd.Parameters.AddWithValue("@foto", variaveis.fotoInstrutor);
@@ -826,5 +855,16 @@ namespace adegaCleitinho
        
     
     }
-  
+
+    public class Bitmap
+    {
+        private MemoryStream mStream;
+        private bool v;
+
+        public Bitmap(MemoryStream mStream, bool v)
+        {
+            this.mStream = mStream;
+            this.v = v;
+        }
+    }
 }
