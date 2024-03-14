@@ -1,11 +1,19 @@
 ﻿using MySql.Data.MySqlClient;
+using Mysqlx.Session;
+using Org.BouncyCastle.Asn1.BC;
+using Org.BouncyCastle.Asn1.Cmp;
+using Org.BouncyCastle.Ocsp;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.WebRequestMethods;
 
 namespace adegaCleitinho
 {
@@ -169,6 +177,17 @@ namespace adegaCleitinho
 
 
         //FUNCIONARIOS
+        private static bool ValidarFTP()
+        {
+            if (string.IsNullOrEmpty(variaveis.enderecoServidorFtp) || string.IsNullOrEmpty(variaveis.usuarioFtp) || string.IsNullOrEmpty(variaveis.senhaFtp))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
         public static void CarragarInstrutores()
         {
             try
@@ -188,11 +207,11 @@ namespace adegaCleitinho
                 dgFuncionario.Columns[3].HeaderText = "Cargo";
                 dgFuncionario.Columns[4].HeaderText = "Email";
                 dgFuncionario.Columns[5].HeaderText = "Senha";
-                dgFuncionario.Columns[6].Visible = false;
+                dgFuncionario.Columns[6].HeaderText = "Nivel";
                 dgFuncionario.Columns[7].HeaderText = "Telefone";
                 dgFuncionario.Columns[8].HeaderText = "admissão";
                 dgFuncionario.Columns[9].Visible = false;
-                dgFuncionario.Columns[10].Visible = false;
+                dgFuncionario.Columns[10].HeaderText = "status";
 
                 dgFuncionario.ClearSelection();
 
@@ -223,11 +242,11 @@ namespace adegaCleitinho
                 dgFuncionario.Columns[3].HeaderText = "Cargo";
                 dgFuncionario.Columns[4].HeaderText = "Email";
                 dgFuncionario.Columns[5].HeaderText = "Senha";
-                dgFuncionario.Columns[6].Visible = false;
+                dgFuncionario.Columns[6].HeaderText = "Nivel";
                 dgFuncionario.Columns[7].HeaderText = "Telefone";
                 dgFuncionario.Columns[8].HeaderText = "admissão";
                 dgFuncionario.Columns[9].Visible = false;
-                dgFuncionario.Columns[10].Visible = false;
+                dgFuncionario.Columns[10].HeaderText = "status";
 
                 dgFuncionario.ClearSelection();
 
@@ -258,11 +277,11 @@ namespace adegaCleitinho
                 dgFuncionario.Columns[3].HeaderText = "Cargo";
                 dgFuncionario.Columns[4].HeaderText = "Email";
                 dgFuncionario.Columns[5].HeaderText = "Senha";
-                dgFuncionario.Columns[6].Visible = false;
+                dgFuncionario.Columns[6].HeaderText = "Nivel";
                 dgFuncionario.Columns[7].HeaderText = "Telefone";
                 dgFuncionario.Columns[8].HeaderText = "admissão";
                 dgFuncionario.Columns[9].Visible = false;
-                dgFuncionario.Columns[10].Visible = false;
+                dgFuncionario.Columns[10].HeaderText = "status";
 
                 dgFuncionario.ClearSelection();
 
@@ -274,379 +293,538 @@ namespace adegaCleitinho
                 MessageBox.Show("Erro ao carregar o nome Funcionario!\n\n" + erro);
             }
         }
+
+        public static void InserirInstrutor()
+        {
+            try
+            {
+                conexao.Conectar();
+                string inserir = "INSERT INTO funcionarios(nomeFuncionario,dataNascFuncionario, cargoFuncionario, emailFuncionario, senhaFuncionario, nivelFuncionario, telefoneFuncionario, admissaoFuncionaro, statusFuncionario  ) VALUES (@nome,@dataNas,@cargo,@email,@senha,@nivel,@telefone,@dataAdm,@status);";
+                MySqlCommand cmd = new MySqlCommand(inserir, conexao.conn);
+
+                cmd.Parameters.AddWithValue("@nome", variaveis.nomeFuncionario);
+                cmd.Parameters.AddWithValue("@dataNas", variaveis.dataNascFuncionario);
+                cmd.Parameters.AddWithValue("@cargo", variaveis.cargoFuncionario);
+                cmd.Parameters.AddWithValue("@email", variaveis.emailFuncionario);
+                cmd.Parameters.AddWithValue("@senha", variaveis.senhaFuncionario);
+                cmd.Parameters.AddWithValue("@nivel", variaveis.nivelFuncionario);
+                cmd.Parameters.AddWithValue("@telefone", variaveis.telefoneFuncionario);
+                cmd.Parameters.AddWithValue("@dataAdm", variaveis.admissaoFuncionaro);
+                cmd.Parameters.AddWithValue("@status", variaveis.statusFuncionario);
+                //cmd.Parameters.AddWithValue("@foto", variaveis.fotoFuncionario);
+
+                cmd.ExecuteNonQuery();
+                var resposta = MessageBox.Show("O Cadastro foi realizado com sucesso?", "Sucesso", MessageBoxButtons.OK);
+                if (resposta == DialogResult.OK)
+                {
+                    new funcionario().Show();
+
+                }
+                conexao.Desconectar();
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show("Erro ao cadastra funcionario!\n\n" + erro.Message, "ERRO");
+            }
+        }
+        public static void CarregarDadosFuncionario()
+        {
+            try
+            {
+                conexao.Conectar();
+                string selecionar = "SELECT * FROM funcionarios WHERE idFuncionario = @codigo;";
+                MySqlCommand cmd = new MySqlCommand(selecionar, conexao.conn);
+                cmd.Parameters.AddWithValue("@codigo", variaveis.codInstrutores);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    variaveis.nomeFuncionario = reader.GetString(1);
+                    variaveis.emailFuncionario = reader.GetString(4);
+                    variaveis.senhaFuncionario = reader.GetString(5);
+                    variaveis.cargoFuncionario = reader.GetString(3);
+                    variaveis.nivelFuncionario = reader.GetString(6);
+                    variaveis.dataNascFuncionario = reader.GetDateTime(2);
+                    variaveis.admissaoFuncionaro = reader.GetDateTime(8);
+                    variaveis.telefoneFuncionario = reader.GetString(7);
+                    variaveis.statusFuncionario = reader.GetString(10);
+
+                }
+                conexao.Desconectar();
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show("Erro ao carregar os dados de funcionario !\n\n" + erro);
+            }
+
+
+        }
+        public static void AlterarFuncionario()
+        {
+            try
+            {
+                conexao.Conectar();
+                string inserir = "UPDATE funcionarios SET nomeFuncionario=@nome,dataNascFuncionario=@dataNasc,cargoFuncionario=@cargo,emailFuncionario=@email,senhaFuncionario=@senha,nivelFuncionario=@nivel,telefoneFuncionario=@telefone,admissaoFuncionaro=@admissao,statusFuncionario=@status WHERE idFuncionario = @codigo";
+                MySqlCommand cmd = new MySqlCommand(inserir, conexao.conn);
+
+                cmd.Parameters.AddWithValue("@nome", variaveis.nomeFuncionario);
+                cmd.Parameters.AddWithValue("@email", variaveis.emailFuncionario);
+                cmd.Parameters.AddWithValue("@senha", variaveis.senhaFuncionario);
+                cmd.Parameters.AddWithValue("@cargo", variaveis.cargoFuncionario);
+                cmd.Parameters.AddWithValue("@nivel", variaveis.nivelFuncionario);
+                cmd.Parameters.AddWithValue("@dataNasc", variaveis.dataNascFuncionario);
+                cmd.Parameters.AddWithValue("@admissao", variaveis.admissaoFuncionaro);
+                cmd.Parameters.AddWithValue("@telefone", variaveis.telefoneFuncionario);
+                cmd.Parameters.AddWithValue("@status", variaveis.statusFuncionario);
+                cmd.Parameters.AddWithValue("@codigo", variaveis.codInstrutores);
+
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Funcionario alterado com sucessso!", "ALTERAÇÃO DO FUNCIONARIO");
+
+            }
+
+            catch (Exception erro)
+            {
+                MessageBox.Show("Erro ao carregar os dados de funcionario !\n\n" + erro);
+            }
+        }
+
+        public static void AlterarFoto()
+        {
+            try
+            {
+                conexao.Conectar();
+                string inserir = "UPDATE tblfuncionarios SET fotoFuncionario = @foto WHERE idFuncionario=@codigo";
+                MySqlCommand cmd = new MySqlCommand(inserir, conexao.conn);
+                //parâmetros
+                cmd.Parameters.AddWithValue("@foto", variaveis.fotoInstrutor);
+                cmd.Parameters.AddWithValue("@codigo", variaveis.codInstrutores);
+                //fim parâmetros
+
+                cmd.ExecuteNonQuery();
+                conexao.Desconectar();
+
+                if (ValidarFTP())
+                {
+                    if (!string.IsNullOrEmpty(variaveis.fotoInstrutor))
+                    {
+                        string urlEnviarArquivo = variaveis.enderecoServidorFtp + "funcionario/" + Path.GetFileName(variaveis.fotoInstrutor); // nome da pasta aonde ira ser armazenado as fotos (de acordo com o projeto (funcionario))
+                        try
+                        {
+                            ftp.EnviarArquivoFtp(variaveis.caminhoFotoInstrutores, urlEnviarArquivo, variaveis.usuarioFtp, variaveis.senhaFtp);
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Foto não selecionada ou existente.", "FOTO");
+                        }
+                    }
+                }
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show("Erro ao alterar a foto do Funcionário!\n\n" + erro.Message, "ERRO");
+            }
+        }
+
+
+
+
+
+        public static void DesativarFuncionario()
+        {
+            try
+            {
+                conexao.Conectar();
+                string inserir = "UPDATE funcionarios SET statusFuncionario='DESATIVADO' WHERE idFuncionario=@codigo";
+                MySqlCommand cmd = new MySqlCommand(inserir, conexao.conn);
+                //parametros
+
+                cmd.Parameters.AddWithValue("@status", variaveis.statusFuncionario);
+                cmd.Parameters.AddWithValue("@codigo", variaveis.codInstrutores);
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Funcionario deletado com sucessso!", "ALTERAÇÃO DO FUNCIONARIO");
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show("Erro ao desativar funcionario!\n\n" + erro.Message, "ERRO!");
+            }
+        }
         //FUNCIONARIOS
 
 
 
         //Clientes
         public static void CarregarClientes()
-        {
-            try
             {
-                conexao.Conectar();
-                string selecionar = "SELECT * FROM usuarios;";
-                MySqlCommand cmd = new MySqlCommand(selecionar, conexao.conn);
-                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
+                try
+                {
+                    conexao.Conectar();
+                    string selecionar = "SELECT * FROM usuarios;";
+                    MySqlCommand cmd = new MySqlCommand(selecionar, conexao.conn);
+                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
 
-                dgCliente.DataSource = dt;
+                    dgCliente.DataSource = dt;
 
-                dgCliente.Columns[0].Visible = false;
-                dgCliente.Columns[1].HeaderText = "Nome";
-                dgCliente.Columns[2].HeaderText = "Email";
-                dgCliente.Columns[3].HeaderText = "Senha";
-                dgCliente.Columns[4].HeaderText = "Data";
-                dgCliente.Columns[5].HeaderText = "Telefone";
-                dgCliente.Columns[6].HeaderText = "Endereço";
-                dgCliente.Columns[7].HeaderText = "CEP";
-                dgCliente.Columns[8].Visible = false;
+                    dgCliente.Columns[0].Visible = false;
+                    dgCliente.Columns[1].HeaderText = "Nome";
+                    dgCliente.Columns[2].HeaderText = "Email";
+                    dgCliente.Columns[3].HeaderText = "Senha";
+                    dgCliente.Columns[4].HeaderText = "Data";
+                    dgCliente.Columns[5].HeaderText = "Telefone";
+                    dgCliente.Columns[6].HeaderText = "Endereço";
+                    dgCliente.Columns[7].HeaderText = "CEP";
+                    dgCliente.Columns[8].Visible = false;
 
-                dgCliente.ClearSelection();
+                    dgCliente.ClearSelection();
 
-                conexao.Desconectar();
+                    conexao.Desconectar();
 
+                }
+                catch (Exception erro)
+                {
+                    MessageBox.Show("Erro ao carregar clientes!\n\n" + erro);
+                }
             }
-            catch (Exception erro)
+            public static void CarregarStatusClientes()
             {
-                MessageBox.Show("Erro ao carregar clientes!\n\n" + erro);
+                try
+                {
+                    conexao.Conectar();
+                    string selecionar = "SELECT * FROM usuarios WHERE statusUsuario = 'ATIVO' ORDER BY nomeUsuario;";
+                    MySqlCommand cmd = new MySqlCommand(selecionar, conexao.conn);
+                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+
+                    dgCliente.DataSource = dt;
+
+                    dgCliente.Columns[0].Visible = false;
+                    dgCliente.Columns[1].HeaderText = "Nome";
+                    dgCliente.Columns[2].HeaderText = "Email";
+                    dgCliente.Columns[3].HeaderText = "Senha";
+                    dgCliente.Columns[4].HeaderText = "Data";
+                    dgCliente.Columns[5].HeaderText = "Telefone";
+                    dgCliente.Columns[6].HeaderText = "Endereço";
+                    dgCliente.Columns[7].HeaderText = "CEP";
+                    dgCliente.Columns[8].Visible = false;
+
+                    dgCliente.ClearSelection();
+
+                    conexao.Desconectar();
+
+                }
+                catch (Exception erro)
+                {
+                    MessageBox.Show("Erro ao carregar status clientes!\n\n" + erro);
+                }
             }
-        }
-        public static void CarregarStatusClientes()
-        {
-            try
+            public static void CarregarUsarioNome()
             {
-                conexao.Conectar();
-                string selecionar = "SELECT * FROM usuarios WHERE statusUsuario = 'ATIVO' ORDER BY nomeUsuario;";
-                MySqlCommand cmd = new MySqlCommand(selecionar, conexao.conn);
-                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
+                try
+                {
+                    conexao.Conectar();
+                    string selecionar = "SELECT * FROM usuarios WHERE nomeUsuario LIKE '%" + variaveis.nomeUsuario + "%' ORDER BY nomeUsuario;";
+                    MySqlCommand cmd = new MySqlCommand(selecionar, conexao.conn);
+                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
 
-                dgCliente.DataSource = dt;
+                    dgCliente.DataSource = dt;
 
-                dgCliente.Columns[0].Visible = false;
-                dgCliente.Columns[1].HeaderText = "Nome";
-                dgCliente.Columns[2].HeaderText = "Email";
-                dgCliente.Columns[3].HeaderText = "Senha";
-                dgCliente.Columns[4].HeaderText = "Data";
-                dgCliente.Columns[5].HeaderText = "Telefone";
-                dgCliente.Columns[6].HeaderText = "Endereço";
-                dgCliente.Columns[7].HeaderText = "CEP";
-                dgCliente.Columns[8].Visible = false;
+                    dgCliente.Columns[0].Visible = false;
+                    dgCliente.Columns[1].HeaderText = "Nome";
+                    dgCliente.Columns[2].HeaderText = "Email";
+                    dgCliente.Columns[3].HeaderText = "Senha";
+                    dgCliente.Columns[4].HeaderText = "Data";
+                    dgCliente.Columns[5].HeaderText = "Telefone";
+                    dgCliente.Columns[6].HeaderText = "Endereço";
+                    dgCliente.Columns[7].HeaderText = "CEP";
+                    dgCliente.Columns[8].Visible = false;
 
-                dgCliente.ClearSelection();
+                    dgCliente.ClearSelection();
 
-                conexao.Desconectar();
-
+                    conexao.Desconectar();
+                }
+                catch (Exception erro)
+                {
+                    MessageBox.Show("Erro ao carregar nome clientes!\n\n" + erro);
+                }
             }
-            catch (Exception erro)
+            //Clientes
+
+
+            //Fornecedores
+            public static void CarregarFornecedores()
             {
-                MessageBox.Show("Erro ao carregar status clientes!\n\n" + erro);
+                try
+                {
+                    conexao.Conectar();
+                    string selecionar = "SELECT * FROM fornecedores";
+                    MySqlCommand cmd = new MySqlCommand(selecionar, conexao.conn);
+                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+
+                    dgFornecedores.DataSource = dt;
+
+                    dgFornecedores.Columns[0].Visible = false;
+                    dgFornecedores.Columns[1].HeaderText = "Nome";
+                    dgFornecedores.Columns[2].HeaderText = "Telefone";
+                    dgFornecedores.Columns[3].HeaderText = "Endereço";
+                    dgFornecedores.Columns[4].HeaderText = "CEP";
+                    dgFornecedores.Columns[5].HeaderText = "CNPJ";
+                    dgFornecedores.Columns[6].Visible = false;
+
+
+                    dgFornecedores.ClearSelection();
+
+                    conexao.Desconectar();
+
+                }
+                catch (Exception erro)
+                {
+                    MessageBox.Show("Erro ao carregar o Fornecedores!\n\n" + erro);
+                }
             }
-        }
-        public static void CarregarUsarioNome()
-        {
-            try
+            public static void CarregarStatusFornecedores()
             {
-                conexao.Conectar();
-                string selecionar = "SELECT * FROM usuarios WHERE nomeUsuario LIKE '%" + variaveis.nomeUsuario + "%' ORDER BY nomeUsuario;";
-                MySqlCommand cmd = new MySqlCommand(selecionar, conexao.conn);
-                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
+                try
+                {
+                    conexao.Conectar();
+                    string selecionar = "SELECT * FROM fornecedores WHERE statusFornecedor = 'ATIVO' ORDER BY nomeFornecedor;";
+                    MySqlCommand cmd = new MySqlCommand(selecionar, conexao.conn);
+                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
 
-                dgCliente.DataSource = dt;
+                    dgFornecedores.DataSource = dt;
 
-                dgCliente.Columns[0].Visible = false;
-                dgCliente.Columns[1].HeaderText = "Nome";
-                dgCliente.Columns[2].HeaderText = "Email";
-                dgCliente.Columns[3].HeaderText = "Senha";
-                dgCliente.Columns[4].HeaderText = "Data";
-                dgCliente.Columns[5].HeaderText = "Telefone";
-                dgCliente.Columns[6].HeaderText = "Endereço";
-                dgCliente.Columns[7].HeaderText = "CEP";
-                dgCliente.Columns[8].Visible = false;
+                    dgFornecedores.Columns[0].Visible = false;
+                    dgFornecedores.Columns[1].HeaderText = "Nome";
+                    dgFornecedores.Columns[2].HeaderText = "Telefone";
+                    dgFornecedores.Columns[3].HeaderText = "Endereço";
+                    dgFornecedores.Columns[4].HeaderText = "CEP";
+                    dgFornecedores.Columns[5].HeaderText = "CNPJ";
+                    dgFornecedores.Columns[6].Visible = false;
 
-                dgCliente.ClearSelection();
 
-                conexao.Desconectar();
+                    dgFornecedores.ClearSelection();
+
+                    conexao.Desconectar();
+
+                }
+                catch (Exception erro)
+                {
+                    MessageBox.Show("Erro ao carregar o Fornecedores!\n\n" + erro);
+                }
             }
-            catch (Exception erro)
+            public static void CarregarFornecedoresNome()
             {
-                MessageBox.Show("Erro ao carregar nome clientes!\n\n" + erro);
+                try
+                {
+                    conexao.Conectar();
+                    string selecionar = "SELECT * FROM fornecedores WHERE nomeFornecedor LIKE '%" + variaveis.nomeFornecedor + "%' ORDER BY nomeFornecedor";
+                    MySqlCommand cmd = new MySqlCommand(selecionar, conexao.conn);
+                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+
+                    dgFornecedores.DataSource = dt;
+
+                    dgFornecedores.Columns[0].Visible = false;
+                    dgFornecedores.Columns[1].HeaderText = "Nome";
+                    dgFornecedores.Columns[2].HeaderText = "Telefone";
+                    dgFornecedores.Columns[3].HeaderText = "Endereço";
+                    dgFornecedores.Columns[4].HeaderText = "CEP";
+                    dgFornecedores.Columns[5].HeaderText = "CNPJ";
+                    dgFornecedores.Columns[6].Visible = false;
+
+
+                    dgFornecedores.ClearSelection();
+
+                    conexao.Desconectar();
+
+                }
+                catch (Exception erro)
+                {
+                    MessageBox.Show("Erro ao carregar o Fornecedores!\n\n" + erro);
+                }
             }
-        }
-        //Clientes
+            //Fornecedores
 
 
-        //Fornecedores
-        public static void CarregarFornecedores()
-        {
-            try
+            //E-mail
+            public static void CarregarEmail()
             {
-                conexao.Conectar();
-                string selecionar = "SELECT * FROM fornecedores";
-                MySqlCommand cmd = new MySqlCommand(selecionar, conexao.conn);
-                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
+                try
+                {
+                    conexao.Conectar();
+                    string selecionar = "SELECT * FROM contato";
+                    MySqlCommand cmd = new MySqlCommand(selecionar, conexao.conn);
+                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
 
-                dgFornecedores.DataSource = dt;
+                    dgEmail.DataSource = dt;
 
-                dgFornecedores.Columns[0].Visible = false;
-                dgFornecedores.Columns[1].HeaderText = "Nome";
-                dgFornecedores.Columns[2].HeaderText = "Telefone";
-                dgFornecedores.Columns[3].HeaderText = "Endereço";
-                dgFornecedores.Columns[4].HeaderText = "CEP";
-                dgFornecedores.Columns[5].HeaderText = "CNPJ";
-                dgFornecedores.Columns[6].Visible = false;
+                    dgEmail.Columns[0].Visible = false;
+                    dgEmail.Columns[1].HeaderText = "Nome";
+                    dgEmail.Columns[2].HeaderText = "email";
+                    dgEmail.Columns[3].HeaderText = "Telefone";
+                    dgEmail.Columns[4].HeaderText = "Assunto";
+                    dgEmail.Columns[5].HeaderText = "Data";
+                    dgEmail.Columns[6].HeaderText = "Hora";
+                    dgEmail.Columns[7].Visible = false;
 
+                    dgEmail.ClearSelection();
 
-                dgFornecedores.ClearSelection();
+                    conexao.Desconectar();
 
-                conexao.Desconectar();
-
+                }
+                catch (Exception erro)
+                {
+                    MessageBox.Show("Erro ao carregar o E-mail!\n\n" + erro);
+                }
             }
-            catch (Exception erro)
+            public static void CarregarStatusEmail()
             {
-                MessageBox.Show("Erro ao carregar o Fornecedores!\n\n" + erro);
+                try
+                {
+                    conexao.Conectar();
+                    string selecionar = "SELECT * FROM contato WHERE statusContato = 'ATIVO' ORDER BY nomeContato;";
+                    MySqlCommand cmd = new MySqlCommand(selecionar, conexao.conn);
+                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+
+                    dgEmail.DataSource = dt;
+
+                    dgEmail.Columns[0].Visible = false;
+                    dgEmail.Columns[1].HeaderText = "Nome";
+                    dgEmail.Columns[2].HeaderText = "email";
+                    dgEmail.Columns[3].HeaderText = "Telefone";
+                    dgEmail.Columns[4].HeaderText = "Assunto";
+                    dgEmail.Columns[5].HeaderText = "Data";
+                    dgEmail.Columns[6].HeaderText = "Hora";
+                    dgEmail.Columns[7].Visible = false;
+
+                    dgEmail.ClearSelection();
+
+                    conexao.Desconectar();
+
+                }
+                catch (Exception erro)
+                {
+                    MessageBox.Show("Erro ao carregar status o E-mail!\n\n" + erro);
+                }
             }
-        }
-        public static void CarregarStatusFornecedores()
-        {
-            try
+            public static void CarregarEmailNome()
             {
-                conexao.Conectar();
-                string selecionar = "SELECT * FROM fornecedores WHERE statusFornecedor = 'ATIVO' ORDER BY nomeFornecedor;";
-                MySqlCommand cmd = new MySqlCommand(selecionar, conexao.conn);
-                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
+                try
+                {
+                    conexao.Conectar();
+                    string selecionar = "SELECT * FROM contato WHERE nomeContato LIKE '%" + variaveis.nomeContato + "%' ORDER BY nomeContato;";
+                    MySqlCommand cmd = new MySqlCommand(selecionar, conexao.conn);
+                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
 
-                dgFornecedores.DataSource = dt;
+                    dgEmail.DataSource = dt;
 
-                dgFornecedores.Columns[0].Visible = false;
-                dgFornecedores.Columns[1].HeaderText = "Nome";
-                dgFornecedores.Columns[2].HeaderText = "Telefone";
-                dgFornecedores.Columns[3].HeaderText = "Endereço";
-                dgFornecedores.Columns[4].HeaderText = "CEP";
-                dgFornecedores.Columns[5].HeaderText = "CNPJ";
-                dgFornecedores.Columns[6].Visible = false;
+                    dgEmail.Columns[0].Visible = false;
+                    dgEmail.Columns[1].HeaderText = "Nome";
+                    dgEmail.Columns[2].HeaderText = "email";
+                    dgEmail.Columns[3].HeaderText = "Telefone";
+                    dgEmail.Columns[4].HeaderText = "Assunto";
+                    dgEmail.Columns[5].HeaderText = "Data";
+                    dgEmail.Columns[6].HeaderText = "Hora";
+                    dgEmail.Columns[7].Visible = false;
 
+                    dgEmail.ClearSelection();
 
-                dgFornecedores.ClearSelection();
+                    conexao.Desconectar();
 
-                conexao.Desconectar();
-
+                }
+                catch (Exception erro)
+                {
+                    MessageBox.Show("Erro ao carregar o nome E-mail!\n\n" + erro);
+                }
             }
-            catch (Exception erro)
+            //E-mail
+
+
+            //produtos
+            public static void CarregarProdutos()
             {
-                MessageBox.Show("Erro ao carregar o Fornecedores!\n\n" + erro);
+                try
+                {
+                    conexao.Conectar();
+                    string selecionar = "SELECT * FROM produto;";
+                    MySqlCommand cmd = new MySqlCommand(selecionar, conexao.conn);
+                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+
+                    dgProdutos.DataSource = dt;
+
+                    dgProdutos.Columns[0].Visible = false;
+                    dgProdutos.Columns[1].HeaderText = "Marca";
+                    dgProdutos.Columns[2].HeaderText = "Nome";
+                    dgProdutos.Columns[3].HeaderText = "Validade";
+                    dgProdutos.Columns[4].HeaderText = "Alcoolico";
+                    dgProdutos.Columns[5].HeaderText = "Quantidade";
+                    dgProdutos.Columns[6].Visible = false;
+                    dgProdutos.Columns[7].HeaderText = "Forcenecedor";
+
+                    dgProdutos.ClearSelection();
+
+                    conexao.Desconectar();
+
+                }
+                catch (Exception erro)
+                {
+                    MessageBox.Show("Erro ao carregar o E-mail!\n\n" + erro);
+                }
             }
-        }
-        public static void CarregarFornecedoresNome()
-        {
-            try
-            {
-                conexao.Conectar();
-                string selecionar = "SELECT * FROM fornecedores WHERE nomeFornecedor LIKE '%" + variaveis.nomeFornecedor + "%' ORDER BY nomeFornecedor";
-                MySqlCommand cmd = new MySqlCommand(selecionar, conexao.conn);
-                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
+            //produtos
 
-                dgFornecedores.DataSource = dt;
-
-                dgFornecedores.Columns[0].Visible = false;
-                dgFornecedores.Columns[1].HeaderText = "Nome";
-                dgFornecedores.Columns[2].HeaderText = "Telefone";
-                dgFornecedores.Columns[3].HeaderText = "Endereço";
-                dgFornecedores.Columns[4].HeaderText = "CEP";
-                dgFornecedores.Columns[5].HeaderText = "CNPJ";
-                dgFornecedores.Columns[6].Visible = false;
-
-
-                dgFornecedores.ClearSelection();
-
-                conexao.Desconectar();
-
-            }
-            catch (Exception erro)
-            {
-                MessageBox.Show("Erro ao carregar o Fornecedores!\n\n" + erro);
-            }
-        }
-        //Fornecedores
-
-
-        //E-mail
-        public static void CarregarEmail()
-        {
-            try
-            {
-                conexao.Conectar();
-                string selecionar = "SELECT * FROM contato";
-                MySqlCommand cmd = new MySqlCommand(selecionar, conexao.conn);
-                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-
-                dgEmail.DataSource = dt;
-
-                dgEmail.Columns[0].Visible = false;
-                dgEmail.Columns[1].HeaderText = "Nome";
-                dgEmail.Columns[2].HeaderText = "email";
-                dgEmail.Columns[3].HeaderText = "Telefone";
-                dgEmail.Columns[4].HeaderText = "Assunto";
-                dgEmail.Columns[5].HeaderText = "Data";
-                dgEmail.Columns[6].HeaderText = "Hora";
-                dgEmail.Columns[7].Visible = false;
-
-                dgEmail.ClearSelection();
-
-                conexao.Desconectar();
-
-            }
-            catch (Exception erro)
-            {
-                MessageBox.Show("Erro ao carregar o E-mail!\n\n" + erro);
-            }
-        }
-        public static void CarregarStatusEmail()
-        {
-            try
-            {
-                conexao.Conectar();
-                string selecionar = "SELECT * FROM contato WHERE statusContato = 'ATIVO' ORDER BY nomeContato;";
-                MySqlCommand cmd = new MySqlCommand(selecionar, conexao.conn);
-                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-
-                dgEmail.DataSource = dt;
-
-                dgEmail.Columns[0].Visible = false;
-                dgEmail.Columns[1].HeaderText = "Nome";
-                dgEmail.Columns[2].HeaderText = "email";
-                dgEmail.Columns[3].HeaderText = "Telefone";
-                dgEmail.Columns[4].HeaderText = "Assunto";
-                dgEmail.Columns[5].HeaderText = "Data";
-                dgEmail.Columns[6].HeaderText = "Hora";
-                dgEmail.Columns[7].Visible = false;
-
-                dgEmail.ClearSelection();
-
-                conexao.Desconectar();
-
-            }
-            catch (Exception erro)
-            {
-                MessageBox.Show("Erro ao carregar status o E-mail!\n\n" + erro);
-            }
-        }
-        public static void CarregarEmailNome()
-        {
-            try
-            {
-                conexao.Conectar();
-                string selecionar = "SELECT * FROM contato WHERE nomeContato LIKE '%" + variaveis.nomeContato + "%' ORDER BY nomeContato;";
-                MySqlCommand cmd = new MySqlCommand(selecionar, conexao.conn);
-                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-
-                dgEmail.DataSource = dt;
-
-                dgEmail.Columns[0].Visible = false;
-                dgEmail.Columns[1].HeaderText = "Nome";
-                dgEmail.Columns[2].HeaderText = "email";
-                dgEmail.Columns[3].HeaderText = "Telefone";
-                dgEmail.Columns[4].HeaderText = "Assunto";
-                dgEmail.Columns[5].HeaderText = "Data";
-                dgEmail.Columns[6].HeaderText = "Hora";
-                dgEmail.Columns[7].Visible = false;
-
-                dgEmail.ClearSelection();
-
-                conexao.Desconectar();
-
-            }
-            catch (Exception erro)
-            {
-                MessageBox.Show("Erro ao carregar o nome E-mail!\n\n" + erro);
-            }
-        }
-        //E-mail
-
-
-        //produtos
-        public static void CarregarProdutos()
-        {
-            try
-            {
-                conexao.Conectar();
-                string selecionar = "SELECT * FROM produto;";
-                MySqlCommand cmd = new MySqlCommand(selecionar, conexao.conn);
-                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-
-                dgProdutos.DataSource = dt;
-
-                dgProdutos.Columns[0].Visible = false;
-                dgProdutos.Columns[1].HeaderText = "Marca";
-                dgProdutos.Columns[2].HeaderText = "Nome";
-                dgProdutos.Columns[3].HeaderText = "Validade";
-                dgProdutos.Columns[4].HeaderText = "Alcoolico";
-                dgProdutos.Columns[5].HeaderText = "Quantidade";
-                dgProdutos.Columns[6].Visible = false;
-                dgProdutos.Columns[7].HeaderText = "Forcenecedor";
-
-                dgProdutos.ClearSelection();
-
-                conexao.Desconectar();
-
-            }
-            catch (Exception erro)
-            {
-                MessageBox.Show("Erro ao carregar o E-mail!\n\n" + erro);
-            }
-        }
-        //produtos
-
-
-        //compra
-
-        public static void CarregarCompra()
-        {
-            try
-            {
-                conexao.Conectar();
-                string selecionar = "SELECT usuarios.nomeUsuario ,compra.dataCompra, compra.horaCompra,compra.precoCompra FROM compra INNER JOIN usuarios ON compra.idCompra = usuarios.idUsuario;";
-                MySqlCommand cmd = new MySqlCommand(selecionar, conexao.conn);
-                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-
-                dgCompra.DataSource = dt;
-
-                dgCompra.Columns[0].HeaderText = "Nome";
-                dgCompra.Columns[1].HeaderText = "Data";
-                dgCompra.Columns[2].HeaderText = "hora";
-                dgCompra.Columns[3].HeaderText = "preço";
-                dgCompra.ClearSelection();
-
-                conexao.Desconectar();
-
-            }
-            catch (Exception erro)
-            {
-                MessageBox.Show("Erro ao carregar o Compra!\n\n" + erro);
-            }
 
             //compra
 
-        }
+            public static void CarregarCompra()
+            {
+                try
+                {
+                    conexao.Conectar();
+                    string selecionar = "SELECT usuarios.nomeUsuario ,compra.dataCompra, compra.horaCompra,compra.precoCompra FROM compra INNER JOIN usuarios ON compra.idCompra = usuarios.idUsuario;";
+                    MySqlCommand cmd = new MySqlCommand(selecionar, conexao.conn);
+                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+
+                    dgCompra.DataSource = dt;
+
+                    dgCompra.Columns[0].HeaderText = "Nome";
+                    dgCompra.Columns[1].HeaderText = "Data";
+                    dgCompra.Columns[2].HeaderText = "hora";
+                    dgCompra.Columns[3].HeaderText = "preço";
+                    dgCompra.ClearSelection();
+
+                    conexao.Desconectar();
+
+                }
+                catch (Exception erro)
+                {
+                    MessageBox.Show("Erro ao carregar o Compra!\n\n" + erro);
+                }
+
+                //compra
+
+            }
+       
+    
     }
+  
 }

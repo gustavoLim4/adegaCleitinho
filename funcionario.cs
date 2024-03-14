@@ -55,5 +55,48 @@ namespace adegaCleitinho
             }
           
         }
+
+        private void btnCadastrarFuncionario_Click(object sender, EventArgs e)
+        {
+            variaveis.funcao = "CADASTRAR";
+
+            new cdtFuncionario().Show();
+            Hide();
+        }
+
+        private void btnAlterarFuncionario_Click(object sender, EventArgs e)
+        {
+            variaveis.funcao = "ALTERAR";
+
+            new cdtFuncionario().Show();
+            Hide();
+        }
+
+        private void dgvFuncionario_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            variaveis.linhaSelecionada = int.Parse(e.RowIndex.ToString());
+            if (variaveis.linhaSelecionada >= 0)
+            {
+                variaveis.codInstrutores = Convert.ToInt32(dgvFuncionario[0, variaveis.linhaSelecionada].Value);
+            }
+        }
+
+        private void btnExcluirFuncionario_Click(object sender, EventArgs e)
+        {
+            if (variaveis.linhaSelecionada >= 0)
+            {
+                var resposta = MessageBox.Show("Deseja realmente excluir ? Essa ação não poderé ser desfeita ", "Excluir", MessageBoxButtons.YesNo);
+                if (resposta == DialogResult.Yes)
+                {
+                    banco.DesativarFuncionario();
+                    banco.CarragarInstrutores();
+                    dgvFuncionario.ClearSelection();
+                }
+                else
+                {
+                    dgvFuncionario.ClearSelection();
+                }
+            }
+        }
     }
 }
