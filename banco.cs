@@ -6,14 +6,13 @@ using Org.BouncyCastle.Ocsp;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Net.WebRequestMethods;
 
 namespace adegaCleitinho
 {
@@ -201,13 +200,13 @@ namespace adegaCleitinho
             {
                 WebClient ftpclient = new WebClient();
                 ftpclient.Credentials = new NetworkCredential(variaveis.usuarioFtp, variaveis.senhaFtp);
-                byte[] imageToByte = ftpclient.DownloadData(variaveis.enderecoServidorFtp + @"\funcionario\semfoto.png");
+                byte[] imageToByte = ftpclient.DownloadData(variaveis.enderecoServidorFtp + @"\funcionario\user.png");
                 return imageToByte;
             }
         }
 
         //Converter a imagem de Byte para IMG
-        public static Bitmap ByteToImage(byte[] blob)
+        public static Bitmap byteToImagem(byte[] blob)
         {
             MemoryStream mStream = new MemoryStream();
             byte[] pData = blob;
@@ -216,6 +215,7 @@ namespace adegaCleitinho
             mStream.Dispose();
             return bm;
         }
+
         public static void CarragarInstrutores()
         {
             try
@@ -342,13 +342,26 @@ namespace adegaCleitinho
                 cmd.Parameters.AddWithValue("@foto", variaveis.fotoFuncionario);
 
                 cmd.ExecuteNonQuery();
-                var resposta = MessageBox.Show("O Cadastro foi realizado com sucesso?", "Sucesso", MessageBoxButtons.OK);
-                if (resposta == DialogResult.OK)
-                {
-                    new funcionario().Show();
-
-                }
+                MessageBox.Show("Funcionario cadastro com sucesso!", "CADASTRO FUNCIONÁRIO");
                 conexao.Desconectar();
+
+                //Inserir a foto na ftp
+                if (ValidarFTP())
+                {
+                    if (!string.IsNullOrEmpty(variaveis.fotoFuncionario))
+                    {
+                        string urlEnviarArquivo = variaveis.enderecoServidorFtp + "funcionario/" + Path.GetFileName(variaveis.fotoFuncionario);
+
+                        try
+                        {
+                            ftp.EnviarArquivoFtp(variaveis.caminhoFotofuncionario, urlEnviarArquivo, variaveis.usuarioFtp, variaveis.senhaFtp);
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Foto não selecionada ou não existente.", "FOTO");
+                        }
+                    }
+                }
             }
             catch (Exception erro)
             {
@@ -368,14 +381,15 @@ namespace adegaCleitinho
                 if (reader.Read())
                 {
                     variaveis.nomeFuncionario = reader.GetString(1);
+                    variaveis.dataNascFuncionario = reader.GetDateTime(2);
+                    variaveis.cargoFuncionario = reader.GetString(3);
                     variaveis.emailFuncionario = reader.GetString(4);
                     variaveis.senhaFuncionario = reader.GetString(5);
-                    variaveis.cargoFuncionario = reader.GetString(3);
                     variaveis.nivelFuncionario = reader.GetString(6);
-                    variaveis.dataNascFuncionario = reader.GetDateTime(2);
-                    variaveis.fotoInstrutor = variaveis.fotoInstrutor.Remove(0, 12);
-                    variaveis.admissaoFuncionaro = reader.GetDateTime(8);
                     variaveis.telefoneFuncionario = reader.GetString(7);
+                    variaveis.admissaoFuncionaro = reader.GetDateTime(8);
+                    variaveis.fotoFuncionario = reader.GetString(9);
+                    variaveis.fotoFuncionario = variaveis.fotoFuncionario.Remove(0, 12);
                     variaveis.statusFuncionario = reader.GetString(10);
 
                 }
@@ -426,7 +440,7 @@ namespace adegaCleitinho
                 string inserir = "UPDATE funcionarios SET fotoFuncionario = @foto WHERE idFuncionario=@codigo";
                 MySqlCommand cmd = new MySqlCommand(inserir, conexao.conn);
                 //parâmetros
-                cmd.Parameters.AddWithValue("@foto", variaveis.fotoInstrutor);
+                cmd.Parameters.AddWithValue("@foto", variaveis.fotoFuncionario);
                 cmd.Parameters.AddWithValue("@codigo", variaveis.codInstrutores);
                 //fim parâmetros
 
@@ -435,12 +449,12 @@ namespace adegaCleitinho
 
                 if (ValidarFTP())
                 {
-                    if (!string.IsNullOrEmpty(variaveis.fotoInstrutor))
+                    if (!string.IsNullOrEmpty(variaveis.fotoFuncionario))
                     {
-                        string urlEnviarArquivo = variaveis.enderecoServidorFtp + "funcionario/" + Path.GetFileName(variaveis.fotoInstrutor); // nome da pasta aonde ira ser armazenado as fotos (de acordo com o projeto (funcionario))
+                        string urlEnviarArquivo = variaveis.enderecoServidorFtp + "funcionario/" + Path.GetFileName(variaveis.fotoFuncionario); // nome da pasta aonde ira ser armazenado as fotos (de acordo com o projeto (funcionario))
                         try
                         {
-                            ftp.EnviarArquivoFtp(variaveis.caminhoFotoInstrutores, urlEnviarArquivo, variaveis.usuarioFtp, variaveis.senhaFtp);
+                            ftp.EnviarArquivoFtp(variaveis.caminhoFotofuncionario, urlEnviarArquivo, variaveis.usuarioFtp, variaveis.senhaFtp);
                         }
                         catch
                         {
@@ -484,387 +498,374 @@ namespace adegaCleitinho
 
         //Clientes
         public static void CarregarClientes()
+        {
+            try
             {
-                try
-                {
-                    conexao.Conectar();
-                    string selecionar = "SELECT * FROM usuarios;";
-                    MySqlCommand cmd = new MySqlCommand(selecionar, conexao.conn);
-                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
+                conexao.Conectar();
+                string selecionar = "SELECT * FROM usuarios;";
+                MySqlCommand cmd = new MySqlCommand(selecionar, conexao.conn);
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
 
-                    dgCliente.DataSource = dt;
+                dgCliente.DataSource = dt;
 
-                    dgCliente.Columns[0].Visible = false;
-                    dgCliente.Columns[1].HeaderText = "Nome";
-                    dgCliente.Columns[2].HeaderText = "Email";
-                    dgCliente.Columns[3].HeaderText = "Senha";
-                    dgCliente.Columns[4].HeaderText = "Data";
-                    dgCliente.Columns[5].HeaderText = "Telefone";
-                    dgCliente.Columns[6].HeaderText = "Endereço";
-                    dgCliente.Columns[7].HeaderText = "CEP";
-                    dgCliente.Columns[8].Visible = false;
+                dgCliente.Columns[0].Visible = false;
+                dgCliente.Columns[1].HeaderText = "Nome";
+                dgCliente.Columns[2].HeaderText = "Email";
+                dgCliente.Columns[3].HeaderText = "Senha";
+                dgCliente.Columns[4].HeaderText = "Data";
+                dgCliente.Columns[5].HeaderText = "Telefone";
+                dgCliente.Columns[6].HeaderText = "Endereço";
+                dgCliente.Columns[7].HeaderText = "CEP";
+                dgCliente.Columns[8].Visible = false;
 
-                    dgCliente.ClearSelection();
+                dgCliente.ClearSelection();
 
-                    conexao.Desconectar();
+                conexao.Desconectar();
 
-                }
-                catch (Exception erro)
-                {
-                    MessageBox.Show("Erro ao carregar clientes!\n\n" + erro);
-                }
             }
-            public static void CarregarStatusClientes()
+            catch (Exception erro)
             {
-                try
-                {
-                    conexao.Conectar();
-                    string selecionar = "SELECT * FROM usuarios WHERE statusUsuario = 'ATIVO' ORDER BY nomeUsuario;";
-                    MySqlCommand cmd = new MySqlCommand(selecionar, conexao.conn);
-                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-
-                    dgCliente.DataSource = dt;
-
-                    dgCliente.Columns[0].Visible = false;
-                    dgCliente.Columns[1].HeaderText = "Nome";
-                    dgCliente.Columns[2].HeaderText = "Email";
-                    dgCliente.Columns[3].HeaderText = "Senha";
-                    dgCliente.Columns[4].HeaderText = "Data";
-                    dgCliente.Columns[5].HeaderText = "Telefone";
-                    dgCliente.Columns[6].HeaderText = "Endereço";
-                    dgCliente.Columns[7].HeaderText = "CEP";
-                    dgCliente.Columns[8].Visible = false;
-
-                    dgCliente.ClearSelection();
-
-                    conexao.Desconectar();
-
-                }
-                catch (Exception erro)
-                {
-                    MessageBox.Show("Erro ao carregar status clientes!\n\n" + erro);
-                }
+                MessageBox.Show("Erro ao carregar clientes!\n\n" + erro);
             }
-            public static void CarregarUsarioNome()
+        }
+        public static void CarregarStatusClientes()
+        {
+            try
             {
-                try
-                {
-                    conexao.Conectar();
-                    string selecionar = "SELECT * FROM usuarios WHERE nomeUsuario LIKE '%" + variaveis.nomeUsuario + "%' ORDER BY nomeUsuario;";
-                    MySqlCommand cmd = new MySqlCommand(selecionar, conexao.conn);
-                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
+                conexao.Conectar();
+                string selecionar = "SELECT * FROM usuarios WHERE statusUsuario = 'ATIVO' ORDER BY nomeUsuario;";
+                MySqlCommand cmd = new MySqlCommand(selecionar, conexao.conn);
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
 
-                    dgCliente.DataSource = dt;
+                dgCliente.DataSource = dt;
 
-                    dgCliente.Columns[0].Visible = false;
-                    dgCliente.Columns[1].HeaderText = "Nome";
-                    dgCliente.Columns[2].HeaderText = "Email";
-                    dgCliente.Columns[3].HeaderText = "Senha";
-                    dgCliente.Columns[4].HeaderText = "Data";
-                    dgCliente.Columns[5].HeaderText = "Telefone";
-                    dgCliente.Columns[6].HeaderText = "Endereço";
-                    dgCliente.Columns[7].HeaderText = "CEP";
-                    dgCliente.Columns[8].Visible = false;
+                dgCliente.Columns[0].Visible = false;
+                dgCliente.Columns[1].HeaderText = "Nome";
+                dgCliente.Columns[2].HeaderText = "Email";
+                dgCliente.Columns[3].HeaderText = "Senha";
+                dgCliente.Columns[4].HeaderText = "Data";
+                dgCliente.Columns[5].HeaderText = "Telefone";
+                dgCliente.Columns[6].HeaderText = "Endereço";
+                dgCliente.Columns[7].HeaderText = "CEP";
+                dgCliente.Columns[8].Visible = false;
 
-                    dgCliente.ClearSelection();
+                dgCliente.ClearSelection();
 
-                    conexao.Desconectar();
-                }
-                catch (Exception erro)
-                {
-                    MessageBox.Show("Erro ao carregar nome clientes!\n\n" + erro);
-                }
+                conexao.Desconectar();
+
             }
-            //Clientes
-
-
-            //Fornecedores
-            public static void CarregarFornecedores()
+            catch (Exception erro)
             {
-                try
-                {
-                    conexao.Conectar();
-                    string selecionar = "SELECT * FROM fornecedores";
-                    MySqlCommand cmd = new MySqlCommand(selecionar, conexao.conn);
-                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-
-                    dgFornecedores.DataSource = dt;
-
-                    dgFornecedores.Columns[0].Visible = false;
-                    dgFornecedores.Columns[1].HeaderText = "Nome";
-                    dgFornecedores.Columns[2].HeaderText = "Telefone";
-                    dgFornecedores.Columns[3].HeaderText = "Endereço";
-                    dgFornecedores.Columns[4].HeaderText = "CEP";
-                    dgFornecedores.Columns[5].HeaderText = "CNPJ";
-                    dgFornecedores.Columns[6].Visible = false;
-
-
-                    dgFornecedores.ClearSelection();
-
-                    conexao.Desconectar();
-
-                }
-                catch (Exception erro)
-                {
-                    MessageBox.Show("Erro ao carregar o Fornecedores!\n\n" + erro);
-                }
+                MessageBox.Show("Erro ao carregar status clientes!\n\n" + erro);
             }
-            public static void CarregarStatusFornecedores()
+        }
+        public static void CarregarUsarioNome()
+        {
+            try
             {
-                try
-                {
-                    conexao.Conectar();
-                    string selecionar = "SELECT * FROM fornecedores WHERE statusFornecedor = 'ATIVO' ORDER BY nomeFornecedor;";
-                    MySqlCommand cmd = new MySqlCommand(selecionar, conexao.conn);
-                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
+                conexao.Conectar();
+                string selecionar = "SELECT * FROM usuarios WHERE nomeUsuario LIKE '%" + variaveis.nomeUsuario + "%' ORDER BY nomeUsuario;";
+                MySqlCommand cmd = new MySqlCommand(selecionar, conexao.conn);
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
 
-                    dgFornecedores.DataSource = dt;
+                dgCliente.DataSource = dt;
 
-                    dgFornecedores.Columns[0].Visible = false;
-                    dgFornecedores.Columns[1].HeaderText = "Nome";
-                    dgFornecedores.Columns[2].HeaderText = "Telefone";
-                    dgFornecedores.Columns[3].HeaderText = "Endereço";
-                    dgFornecedores.Columns[4].HeaderText = "CEP";
-                    dgFornecedores.Columns[5].HeaderText = "CNPJ";
-                    dgFornecedores.Columns[6].Visible = false;
+                dgCliente.Columns[0].Visible = false;
+                dgCliente.Columns[1].HeaderText = "Nome";
+                dgCliente.Columns[2].HeaderText = "Email";
+                dgCliente.Columns[3].HeaderText = "Senha";
+                dgCliente.Columns[4].HeaderText = "Data";
+                dgCliente.Columns[5].HeaderText = "Telefone";
+                dgCliente.Columns[6].HeaderText = "Endereço";
+                dgCliente.Columns[7].HeaderText = "CEP";
+                dgCliente.Columns[8].Visible = false;
 
+                dgCliente.ClearSelection();
 
-                    dgFornecedores.ClearSelection();
-
-                    conexao.Desconectar();
-
-                }
-                catch (Exception erro)
-                {
-                    MessageBox.Show("Erro ao carregar o Fornecedores!\n\n" + erro);
-                }
+                conexao.Desconectar();
             }
-            public static void CarregarFornecedoresNome()
+            catch (Exception erro)
             {
-                try
-                {
-                    conexao.Conectar();
-                    string selecionar = "SELECT * FROM fornecedores WHERE nomeFornecedor LIKE '%" + variaveis.nomeFornecedor + "%' ORDER BY nomeFornecedor";
-                    MySqlCommand cmd = new MySqlCommand(selecionar, conexao.conn);
-                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-
-                    dgFornecedores.DataSource = dt;
-
-                    dgFornecedores.Columns[0].Visible = false;
-                    dgFornecedores.Columns[1].HeaderText = "Nome";
-                    dgFornecedores.Columns[2].HeaderText = "Telefone";
-                    dgFornecedores.Columns[3].HeaderText = "Endereço";
-                    dgFornecedores.Columns[4].HeaderText = "CEP";
-                    dgFornecedores.Columns[5].HeaderText = "CNPJ";
-                    dgFornecedores.Columns[6].Visible = false;
-
-
-                    dgFornecedores.ClearSelection();
-
-                    conexao.Desconectar();
-
-                }
-                catch (Exception erro)
-                {
-                    MessageBox.Show("Erro ao carregar o Fornecedores!\n\n" + erro);
-                }
+                MessageBox.Show("Erro ao carregar nome clientes!\n\n" + erro);
             }
-            //Fornecedores
+        }
+        //Clientes
 
 
-            //E-mail
-            public static void CarregarEmail()
+        //Fornecedores
+        public static void CarregarFornecedores()
+        {
+            try
             {
-                try
-                {
-                    conexao.Conectar();
-                    string selecionar = "SELECT * FROM contato";
-                    MySqlCommand cmd = new MySqlCommand(selecionar, conexao.conn);
-                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
+                conexao.Conectar();
+                string selecionar = "SELECT * FROM fornecedores";
+                MySqlCommand cmd = new MySqlCommand(selecionar, conexao.conn);
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
 
-                    dgEmail.DataSource = dt;
+                dgFornecedores.DataSource = dt;
 
-                    dgEmail.Columns[0].Visible = false;
-                    dgEmail.Columns[1].HeaderText = "Nome";
-                    dgEmail.Columns[2].HeaderText = "email";
-                    dgEmail.Columns[3].HeaderText = "Telefone";
-                    dgEmail.Columns[4].HeaderText = "Assunto";
-                    dgEmail.Columns[5].HeaderText = "Data";
-                    dgEmail.Columns[6].HeaderText = "Hora";
-                    dgEmail.Columns[7].Visible = false;
+                dgFornecedores.Columns[0].Visible = false;
+                dgFornecedores.Columns[1].HeaderText = "Nome";
+                dgFornecedores.Columns[2].HeaderText = "Telefone";
+                dgFornecedores.Columns[3].HeaderText = "Endereço";
+                dgFornecedores.Columns[4].HeaderText = "CEP";
+                dgFornecedores.Columns[5].HeaderText = "CNPJ";
+                dgFornecedores.Columns[6].Visible = false;
 
-                    dgEmail.ClearSelection();
 
-                    conexao.Desconectar();
+                dgFornecedores.ClearSelection();
 
-                }
-                catch (Exception erro)
-                {
-                    MessageBox.Show("Erro ao carregar o E-mail!\n\n" + erro);
-                }
+                conexao.Desconectar();
+
             }
-            public static void CarregarStatusEmail()
+            catch (Exception erro)
             {
-                try
-                {
-                    conexao.Conectar();
-                    string selecionar = "SELECT * FROM contato WHERE statusContato = 'ATIVO' ORDER BY nomeContato;";
-                    MySqlCommand cmd = new MySqlCommand(selecionar, conexao.conn);
-                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-
-                    dgEmail.DataSource = dt;
-
-                    dgEmail.Columns[0].Visible = false;
-                    dgEmail.Columns[1].HeaderText = "Nome";
-                    dgEmail.Columns[2].HeaderText = "email";
-                    dgEmail.Columns[3].HeaderText = "Telefone";
-                    dgEmail.Columns[4].HeaderText = "Assunto";
-                    dgEmail.Columns[5].HeaderText = "Data";
-                    dgEmail.Columns[6].HeaderText = "Hora";
-                    dgEmail.Columns[7].Visible = false;
-
-                    dgEmail.ClearSelection();
-
-                    conexao.Desconectar();
-
-                }
-                catch (Exception erro)
-                {
-                    MessageBox.Show("Erro ao carregar status o E-mail!\n\n" + erro);
-                }
+                MessageBox.Show("Erro ao carregar o Fornecedores!\n\n" + erro);
             }
-            public static void CarregarEmailNome()
+        }
+        public static void CarregarStatusFornecedores()
+        {
+            try
             {
-                try
-                {
-                    conexao.Conectar();
-                    string selecionar = "SELECT * FROM contato WHERE nomeContato LIKE '%" + variaveis.nomeContato + "%' ORDER BY nomeContato;";
-                    MySqlCommand cmd = new MySqlCommand(selecionar, conexao.conn);
-                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
+                conexao.Conectar();
+                string selecionar = "SELECT * FROM fornecedores WHERE statusFornecedor = 'ATIVO' ORDER BY nomeFornecedor;";
+                MySqlCommand cmd = new MySqlCommand(selecionar, conexao.conn);
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
 
-                    dgEmail.DataSource = dt;
+                dgFornecedores.DataSource = dt;
 
-                    dgEmail.Columns[0].Visible = false;
-                    dgEmail.Columns[1].HeaderText = "Nome";
-                    dgEmail.Columns[2].HeaderText = "email";
-                    dgEmail.Columns[3].HeaderText = "Telefone";
-                    dgEmail.Columns[4].HeaderText = "Assunto";
-                    dgEmail.Columns[5].HeaderText = "Data";
-                    dgEmail.Columns[6].HeaderText = "Hora";
-                    dgEmail.Columns[7].Visible = false;
+                dgFornecedores.Columns[0].Visible = false;
+                dgFornecedores.Columns[1].HeaderText = "Nome";
+                dgFornecedores.Columns[2].HeaderText = "Telefone";
+                dgFornecedores.Columns[3].HeaderText = "Endereço";
+                dgFornecedores.Columns[4].HeaderText = "CEP";
+                dgFornecedores.Columns[5].HeaderText = "CNPJ";
+                dgFornecedores.Columns[6].Visible = false;
 
-                    dgEmail.ClearSelection();
 
-                    conexao.Desconectar();
+                dgFornecedores.ClearSelection();
 
-                }
-                catch (Exception erro)
-                {
-                    MessageBox.Show("Erro ao carregar o nome E-mail!\n\n" + erro);
-                }
+                conexao.Desconectar();
+
             }
-            //E-mail
-
-
-            //produtos
-            public static void CarregarProdutos()
+            catch (Exception erro)
             {
-                try
-                {
-                    conexao.Conectar();
-                    string selecionar = "SELECT * FROM produto;";
-                    MySqlCommand cmd = new MySqlCommand(selecionar, conexao.conn);
-                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-
-                    dgProdutos.DataSource = dt;
-
-                    dgProdutos.Columns[0].Visible = false;
-                    dgProdutos.Columns[1].HeaderText = "Marca";
-                    dgProdutos.Columns[2].HeaderText = "Nome";
-                    dgProdutos.Columns[3].HeaderText = "Validade";
-                    dgProdutos.Columns[4].HeaderText = "Alcoolico";
-                    dgProdutos.Columns[5].HeaderText = "Quantidade";
-                    dgProdutos.Columns[6].Visible = false;
-                    dgProdutos.Columns[7].HeaderText = "Forcenecedor";
-
-                    dgProdutos.ClearSelection();
-
-                    conexao.Desconectar();
-
-                }
-                catch (Exception erro)
-                {
-                    MessageBox.Show("Erro ao carregar o E-mail!\n\n" + erro);
-                }
+                MessageBox.Show("Erro ao carregar o Fornecedores!\n\n" + erro);
             }
-            //produtos
+        }
+        public static void CarregarFornecedoresNome()
+        {
+            try
+            {
+                conexao.Conectar();
+                string selecionar = "SELECT * FROM fornecedores WHERE nomeFornecedor LIKE '%" + variaveis.nomeFornecedor + "%' ORDER BY nomeFornecedor";
+                MySqlCommand cmd = new MySqlCommand(selecionar, conexao.conn);
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
 
+                dgFornecedores.DataSource = dt;
+
+                dgFornecedores.Columns[0].Visible = false;
+                dgFornecedores.Columns[1].HeaderText = "Nome";
+                dgFornecedores.Columns[2].HeaderText = "Telefone";
+                dgFornecedores.Columns[3].HeaderText = "Endereço";
+                dgFornecedores.Columns[4].HeaderText = "CEP";
+                dgFornecedores.Columns[5].HeaderText = "CNPJ";
+                dgFornecedores.Columns[6].Visible = false;
+
+
+                dgFornecedores.ClearSelection();
+
+                conexao.Desconectar();
+
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show("Erro ao carregar o Fornecedores!\n\n" + erro);
+            }
+        }
+        //Fornecedores
+
+
+        //E-mail
+        public static void CarregarEmail()
+        {
+            try
+            {
+                conexao.Conectar();
+                string selecionar = "SELECT * FROM contato";
+                MySqlCommand cmd = new MySqlCommand(selecionar, conexao.conn);
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                dgEmail.DataSource = dt;
+
+                dgEmail.Columns[0].Visible = false;
+                dgEmail.Columns[1].HeaderText = "Nome";
+                dgEmail.Columns[2].HeaderText = "email";
+                dgEmail.Columns[3].HeaderText = "Telefone";
+                dgEmail.Columns[4].HeaderText = "Assunto";
+                dgEmail.Columns[5].HeaderText = "Data";
+                dgEmail.Columns[6].HeaderText = "Hora";
+                dgEmail.Columns[7].Visible = false;
+
+                dgEmail.ClearSelection();
+
+                conexao.Desconectar();
+
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show("Erro ao carregar o E-mail!\n\n" + erro);
+            }
+        }
+        public static void CarregarStatusEmail()
+        {
+            try
+            {
+                conexao.Conectar();
+                string selecionar = "SELECT * FROM contato WHERE statusContato = 'ATIVO' ORDER BY nomeContato;";
+                MySqlCommand cmd = new MySqlCommand(selecionar, conexao.conn);
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                dgEmail.DataSource = dt;
+
+                dgEmail.Columns[0].Visible = false;
+                dgEmail.Columns[1].HeaderText = "Nome";
+                dgEmail.Columns[2].HeaderText = "email";
+                dgEmail.Columns[3].HeaderText = "Telefone";
+                dgEmail.Columns[4].HeaderText = "Assunto";
+                dgEmail.Columns[5].HeaderText = "Data";
+                dgEmail.Columns[6].HeaderText = "Hora";
+                dgEmail.Columns[7].Visible = false;
+
+                dgEmail.ClearSelection();
+
+                conexao.Desconectar();
+
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show("Erro ao carregar status o E-mail!\n\n" + erro);
+            }
+        }
+        public static void CarregarEmailNome()
+        {
+            try
+            {
+                conexao.Conectar();
+                string selecionar = "SELECT * FROM contato WHERE nomeContato LIKE '%" + variaveis.nomeContato + "%' ORDER BY nomeContato;";
+                MySqlCommand cmd = new MySqlCommand(selecionar, conexao.conn);
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                dgEmail.DataSource = dt;
+
+                dgEmail.Columns[0].Visible = false;
+                dgEmail.Columns[1].HeaderText = "Nome";
+                dgEmail.Columns[2].HeaderText = "email";
+                dgEmail.Columns[3].HeaderText = "Telefone";
+                dgEmail.Columns[4].HeaderText = "Assunto";
+                dgEmail.Columns[5].HeaderText = "Data";
+                dgEmail.Columns[6].HeaderText = "Hora";
+                dgEmail.Columns[7].Visible = false;
+
+                dgEmail.ClearSelection();
+
+                conexao.Desconectar();
+
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show("Erro ao carregar o nome E-mail!\n\n" + erro);
+            }
+        }
+        //E-mail
+
+
+        //produtos
+        public static void CarregarProdutos()
+        {
+            try
+            {
+                conexao.Conectar();
+                string selecionar = "SELECT * FROM produto;";
+                MySqlCommand cmd = new MySqlCommand(selecionar, conexao.conn);
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                dgProdutos.DataSource = dt;
+
+                dgProdutos.Columns[0].Visible = false;
+                dgProdutos.Columns[1].HeaderText = "Marca";
+                dgProdutos.Columns[2].HeaderText = "Nome";
+                dgProdutos.Columns[3].HeaderText = "Validade";
+                dgProdutos.Columns[4].HeaderText = "Alcoolico";
+                dgProdutos.Columns[5].HeaderText = "Quantidade";
+                dgProdutos.Columns[6].Visible = false;
+                dgProdutos.Columns[7].HeaderText = "Forcenecedor";
+
+                dgProdutos.ClearSelection();
+
+                conexao.Desconectar();
+
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show("Erro ao carregar o E-mail!\n\n" + erro);
+            }
+        }
+        //produtos
+
+
+        //compra
+
+        public static void CarregarCompra()
+        {
+            try
+            {
+                conexao.Conectar();
+                string selecionar = "SELECT usuarios.nomeUsuario ,compra.dataCompra, compra.horaCompra,compra.precoCompra FROM compra INNER JOIN usuarios ON compra.idCompra = usuarios.idUsuario;";
+                MySqlCommand cmd = new MySqlCommand(selecionar, conexao.conn);
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                dgCompra.DataSource = dt;
+
+                dgCompra.Columns[0].HeaderText = "Nome";
+                dgCompra.Columns[1].HeaderText = "Data";
+                dgCompra.Columns[2].HeaderText = "hora";
+                dgCompra.Columns[3].HeaderText = "preço";
+                dgCompra.ClearSelection();
+
+                conexao.Desconectar();
+
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show("Erro ao carregar o Compra!\n\n" + erro);
+            }
 
             //compra
 
-            public static void CarregarCompra()
-            {
-                try
-                {
-                    conexao.Conectar();
-                    string selecionar = "SELECT usuarios.nomeUsuario ,compra.dataCompra, compra.horaCompra,compra.precoCompra FROM compra INNER JOIN usuarios ON compra.idCompra = usuarios.idUsuario;";
-                    MySqlCommand cmd = new MySqlCommand(selecionar, conexao.conn);
-                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-
-                    dgCompra.DataSource = dt;
-
-                    dgCompra.Columns[0].HeaderText = "Nome";
-                    dgCompra.Columns[1].HeaderText = "Data";
-                    dgCompra.Columns[2].HeaderText = "hora";
-                    dgCompra.Columns[3].HeaderText = "preço";
-                    dgCompra.ClearSelection();
-
-                    conexao.Desconectar();
-
-                }
-                catch (Exception erro)
-                {
-                    MessageBox.Show("Erro ao carregar o Compra!\n\n" + erro);
-                }
-
-                //compra
-
-            }
-       
-    
-    }
-
-    public class Bitmap
-    {
-        private MemoryStream mStream;
-        private bool v;
-
-        public Bitmap(MemoryStream mStream, bool v)
-        {
-            this.mStream = mStream;
-            this.v = v;
         }
     }
+       
 }

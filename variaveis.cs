@@ -8,7 +8,7 @@ namespace adegaCleitinho
 {
     internal class variaveis
     {
-        public static string usuario , senha;
+        public static string usuario , senha ,nivel;
 
         public static double somageralCompras;
 
@@ -19,15 +19,15 @@ namespace adegaCleitinho
 
         //funcionario
 
-        public static string enderecoServidorFtp = "ftp://127.0.0.1/img";
+        public static string enderecoServidorFtp = "ftp://127.0.0.1/img/";
         public static string usuarioFtp = "adegacleitinho";
         public static string senhaFtp = "1234";
 
 
         public static int   qtdeFuncionario , qtdeFornecedores , qtdeCliente , qtCompras;
 
-        public static string nomeFuncionario,  cargoFuncionario, emailFuncionario, senhaFuncionario, nivelFuncionario, telefoneFuncionario, 
-            fotoFuncionario, statusFuncionario , fotoInstrutor, atFotoInstrutores, caminhoFotoInstrutores;
+        public static string nomeFuncionario,  cargoFuncionario, emailFuncionario, senhaFuncionario, nivelFuncionario, telefoneFuncionario 
+           , statusFuncionario, fotoFuncionario , atFotofuncionario, caminhoFotofuncionario;
 
         public static DateTime dataNascFuncionario, admissaoFuncionaro;
 

@@ -1,10 +1,10 @@
-﻿using Org.BouncyCastle.Asn1.Cmp;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Security;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -119,7 +119,7 @@ namespace adegaCleitinho
                 else if (variaveis.funcao == "ALTERAR")
                 {
                     banco.AlterarFuncionario();
-                   if (variaveis.atFotoInstrutores == "S") 
+                   if (variaveis.atFotofuncionario == "S") 
                     {
                         banco.AlterarFoto();
                     }
@@ -215,39 +215,7 @@ namespace adegaCleitinho
                 btnSalvacdtFuncionario.Enabled = true;
                 btnSalvacdtFuncionario.Focus();
             }
-        }
-
-        private void cdtFuncionario_Load(object sender, EventArgs e)
-        {
-            if (variaveis.funcao == "ALTERAR")
-            {
-                
-                banco.CarregarDadosFuncionario();
-                txtNomecdtFuncionario.Text = variaveis.nomeFuncionario;
-                txtEmailcdtFuncionario.Text = variaveis.emailFuncionario;
-                txtSenhacdtFuncionario.Text = variaveis.senhaFuncionario;
-                txtCargocdtFuncionaio.Text = variaveis.cargoFuncionario;
-                cbmNivelcdtFuncionaio.Text = variaveis.nivelFuncionario;
-                mskDataNscdtFuncionario.Text = variaveis.dataNascFuncionario.ToString();
-                mskDataADcdtFuncionario.Text = variaveis.admissaoFuncionaro.ToString();
-                mskTelefonecdtFuncionaio.Text = variaveis.telefoneFuncionario;
-                cmbStatuscdtFuncionaio.Text = variaveis.statusFuncionario;
-
-
-                txtNomecdtFuncionario.Enabled = true;
-                txtEmailcdtFuncionario.Enabled = true;
-                txtSenhacdtFuncionario.Enabled = true;
-                txtCargocdtFuncionaio.Enabled = true;
-                cbmNivelcdtFuncionaio.Enabled = true;
-                mskDataNscdtFuncionario.Enabled = true;
-                mskDataADcdtFuncionario.Enabled = true;
-                mskTelefonecdtFuncionaio.Enabled = true;
-                cmbStatuscdtFuncionaio.Enabled = true;
-                btnMaiscdtFunionario.Enabled = true;
-                btnSalvacdtFuncionario.Enabled = true;
-                btnLimapacdtFuncionario.Enabled = false;
-            }
-        }
+        }      
 
         private void btnMaiscdtFunionario_Click(object sender, EventArgs e)
         {
@@ -271,8 +239,8 @@ namespace adegaCleitinho
                 {
                     try
                     {
-                        variaveis.atFotoInstrutores = "S";
-                        variaveis.caminhoFotoInstrutores = ofdFoto.FileName;
+                        variaveis.atFotofuncionario = "S";
+                        variaveis.caminhoFotofuncionario = ofdFoto.FileName;
 
                     }
                     catch (SecurityException ex)
@@ -295,6 +263,38 @@ namespace adegaCleitinho
 
 
         }
-   
+
+        private void cdtFuncionario_Load(object sender, EventArgs e)
+        {
+            if (variaveis.funcao == "ALTERAR")
+            {
+
+                banco.CarregarDadosFuncionario();
+                txtNomecdtFuncionario.Text = variaveis.nomeFuncionario;
+                txtEmailcdtFuncionario.Text = variaveis.emailFuncionario;
+                txtSenhacdtFuncionario.Text = variaveis.senhaFuncionario;
+                txtCargocdtFuncionaio.Text = variaveis.cargoFuncionario;
+                cbmNivelcdtFuncionaio.Text = variaveis.nivelFuncionario;
+                mskDataNscdtFuncionario.Text = variaveis.dataNascFuncionario.ToString();
+                mskDataADcdtFuncionario.Text = variaveis.admissaoFuncionaro.ToString();
+                mskTelefonecdtFuncionaio.Text = variaveis.telefoneFuncionario;
+                pctFotoInstrutores.Image = banco.byteToImagem(banco.GetImgToByte(variaveis.enderecoServidorFtp + "funcionario/" + variaveis.fotoFuncionario));
+                cmbStatuscdtFuncionaio.Text = variaveis.statusFuncionario;
+
+
+                txtNomecdtFuncionario.Enabled = true;
+                txtEmailcdtFuncionario.Enabled = true;
+                txtSenhacdtFuncionario.Enabled = true;
+                txtCargocdtFuncionaio.Enabled = true;
+                cbmNivelcdtFuncionaio.Enabled = true;
+                mskDataNscdtFuncionario.Enabled = true;
+                mskDataADcdtFuncionario.Enabled = true;
+                mskTelefonecdtFuncionaio.Enabled = true;
+                cmbStatuscdtFuncionaio.Enabled = true;
+                btnMaiscdtFunionario.Enabled = true;
+                btnSalvacdtFuncionario.Enabled = true;
+                btnLimapacdtFuncionario.Enabled = false;
+            }
+        }
     }
 }

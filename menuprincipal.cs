@@ -66,8 +66,15 @@ namespace adegaCleitinho
 
         private void btnFuncionarios_Click(object sender, EventArgs e)
         {
-            new funcionario().Show();
-            Hide();
+            if (variaveis.nivel == "NÍVEL 1")
+            {
+                new funcionario().Show();
+                Hide();
+            }
+            else
+            {
+                MessageBox.Show("Você não tem permissão para acessar essa tela.");
+            }
         }
 
         private void btnClientes_Click(object sender, EventArgs e)
