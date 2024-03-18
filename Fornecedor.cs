@@ -52,5 +52,11 @@ namespace adegaCleitinho
                 cbxFornecedores.Checked = true;
             }
         }
+
+        private void btnCadastrarFornecedores_Click(object sender, EventArgs e)
+        {
+            new cdtFornecedor().Show();
+            Hide();
+        }
     }
 }

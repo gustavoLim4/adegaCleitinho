@@ -779,6 +779,84 @@ namespace adegaCleitinho
                 MessageBox.Show("Erro ao carregar o Fornecedores!\n\n" + erro);
             }
         }
+        public static void InserirFornecedor()
+        {
+            try
+            {
+                conexao.Conectar();
+                string inserir = "INSERT INTO fornecedores (nomeFornecedor,telefoneFornecedor, enderecoFornecedor, cepFornecedor, cnpjFornecedor, statusFornecedor) VALUES (@nome,@telefone,@endereco,@cep,@cnpj,@status);";
+                MySqlCommand cmd = new MySqlCommand(inserir, conexao.conn);
+
+                cmd.Parameters.AddWithValue("@nome", variaveis.nomeFornecedor);
+                cmd.Parameters.AddWithValue("@telefone", variaveis.telefoneFornecedor);
+                cmd.Parameters.AddWithValue("@endereco", variaveis.enderecoFornecedor);
+                cmd.Parameters.AddWithValue("@cep", variaveis.cepFornecedor);
+                cmd.Parameters.AddWithValue("@cnpj", variaveis.cnpjFornecedor);
+                cmd.Parameters.AddWithValue("@status", variaveis.statusFornecedor);
+
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Fornecedor cadastrado com sucesso!", "CADASTRO FUNCIONÁRIO");
+                conexao.Desconectar();
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show("Erro ao cadastra funcionario!\n\n" + erro.Message, "ERRO");
+            }
+        }
+        public static void AlterarFornecedor()
+        {
+            try
+            {
+                conexao.Conectar();
+                string inserir = "UPDATE fornecedores SET nomeFornecedor=@nome,telefoneFornecedor=@telefone,enderecoFornecedor=@endereco,cepFornecedor=@cep,cnpjFornecedor=@cnpj,statusFornecedor=@status WHERE idFonecedor = @codigo";
+                MySqlCommand cmd = new MySqlCommand(inserir, conexao.conn);
+
+                cmd.Parameters.AddWithValue("@codigo", variaveis.codFornecedor);
+                cmd.Parameters.AddWithValue("@nome", variaveis.nomeFornecedor);
+                cmd.Parameters.AddWithValue("@telefone", variaveis.telefoneFornecedor);
+                cmd.Parameters.AddWithValue("@endereco", variaveis.enderecoFornecedor);
+                cmd.Parameters.AddWithValue("@cep", variaveis.cepFornecedor);
+                cmd.Parameters.AddWithValue("@cnpj", variaveis.cnpjFornecedor);
+                cmd.Parameters.AddWithValue("@status", variaveis.statusFornecedor);
+
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Fornecedor alterado com sucessso!", "ALTERAÇÃO DO Cliente");
+
+            }
+
+            catch (Exception erro)
+            {
+                MessageBox.Show("Erro ao carregar os dados do cliente !\n\n" + erro);
+            }
+        }
+        public static void CarregarDadosFornecedor()
+        {
+            try
+            {
+                conexao.Conectar();
+                string selecionar = "SELECT * FROM fornecedores WHERE idFonecedor = @codigo;";
+                MySqlCommand cmd = new MySqlCommand(selecionar, conexao.conn);
+                cmd.Parameters.AddWithValue("@codigo", variaveis.codFornecedor);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    variaveis.nomeFornecedor = reader.GetString(1);
+                    variaveis.telefoneFornecedor = reader.GetString(2);
+                    variaveis.enderecoFornecedor = reader.GetString(3);
+                    variaveis.cepFornecedor = reader.GetString(4);
+                    variaveis.cnpjFornecedor = reader.GetString(5);
+                    variaveis.statusFornecedor = reader.GetString(6);
+                }
+                conexao.Desconectar();
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show("Erro ao carregar os dados do fornecedor !\n\n" + erro);
+            }
+
+
+        }
         //Fornecedores
 
 

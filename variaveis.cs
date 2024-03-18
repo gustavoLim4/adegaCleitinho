@@ -47,6 +47,7 @@ namespace adegaCleitinho
         //Fornecedores
 
         public static string nomeFornecedor, telefoneFornecedor, enderecoFornecedor, cepFornecedor, cnpjFornecedor, statusFornecedor;
+        public static int codFornecedor;
 
         //Fornecedores
 

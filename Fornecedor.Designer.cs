@@ -136,6 +136,7 @@
             this.btnCadastrarFornecedores.TabIndex = 31;
             this.btnCadastrarFornecedores.Text = "Cadastrar";
             this.btnCadastrarFornecedores.UseVisualStyleBackColor = false;
+            this.btnCadastrarFornecedores.Click += new System.EventHandler(this.btnCadastrarFornecedores_Click);
             // 
             // btnExcluirFornecedores
             // 

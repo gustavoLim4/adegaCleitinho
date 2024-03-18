@@ -29,25 +29,21 @@
         private void InitializeComponent()
         {
             this.pnlcdtFuncionario = new System.Windows.Forms.Panel();
-            this.btnSalvacdtCliente = new System.Windows.Forms.Button();
-            this.btnLimpacdtCliente = new System.Windows.Forms.Button();
-            this.lblstatuscdtCliente = new System.Windows.Forms.Label();
-            this.cmbStatuscdtCliente = new System.Windows.Forms.ComboBox();
-            this.mskTelefonecdtCliente = new System.Windows.Forms.MaskedTextBox();
-            this.lblTelefonecdtCliente = new System.Windows.Forms.Label();
-            this.mskCEPcdtCliente = new System.Windows.Forms.MaskedTextBox();
-            this.lblCepcdtCliente = new System.Windows.Forms.Label();
-            this.txtEnderecocdtCliente = new System.Windows.Forms.TextBox();
-            this.lblCargocdtCliente = new System.Windows.Forms.Label();
-            this.txtSenhacdtCliente = new System.Windows.Forms.TextBox();
-            this.lblSenhacdtCliente = new System.Windows.Forms.Label();
-            this.mskDataNscdtCliente = new System.Windows.Forms.MaskedTextBox();
-            this.lblDataNasccdtCliente = new System.Windows.Forms.Label();
-            this.txtEmailcdtCliente = new System.Windows.Forms.TextBox();
-            this.lblEmailcdtCliente = new System.Windows.Forms.Label();
-            this.txtNomecdtCliente = new System.Windows.Forms.TextBox();
+            this.lblCNPJcdtFornecedor = new System.Windows.Forms.Label();
+            this.mskCNPJcdtFornecedor = new System.Windows.Forms.MaskedTextBox();
+            this.btnSalvacdtFornecedor = new System.Windows.Forms.Button();
+            this.btnLimpacdtFornecedor = new System.Windows.Forms.Button();
+            this.lblstatuscdtFornecedor = new System.Windows.Forms.Label();
+            this.cmbStatuscdtFornecedor = new System.Windows.Forms.ComboBox();
+            this.mskTelefonecdtFornecedor = new System.Windows.Forms.MaskedTextBox();
+            this.lblTelefonecdtFornecedor = new System.Windows.Forms.Label();
+            this.mskCEPcdtFornecedor = new System.Windows.Forms.MaskedTextBox();
+            this.lblCepcdtFornecedor = new System.Windows.Forms.Label();
+            this.txtEnderecocdtFornecedor = new System.Windows.Forms.TextBox();
+            this.lblCargocdtFornecedor = new System.Windows.Forms.Label();
+            this.txtNomecdtFornecedor = new System.Windows.Forms.TextBox();
             this.pctVoltarcdtCliente = new System.Windows.Forms.PictureBox();
-            this.lblNomecdtCliente = new System.Windows.Forms.Label();
+            this.lblNomecdtFornecedor = new System.Windows.Forms.Label();
             this.lblcdtCliente = new System.Windows.Forms.Label();
             this.pctcdtFuncionario = new System.Windows.Forms.PictureBox();
             this.pnlcdtFuncionario.SuspendLayout();
@@ -58,25 +54,21 @@
             // pnlcdtFuncionario
             // 
             this.pnlcdtFuncionario.BackColor = System.Drawing.Color.Black;
-            this.pnlcdtFuncionario.Controls.Add(this.btnSalvacdtCliente);
-            this.pnlcdtFuncionario.Controls.Add(this.btnLimpacdtCliente);
-            this.pnlcdtFuncionario.Controls.Add(this.lblstatuscdtCliente);
-            this.pnlcdtFuncionario.Controls.Add(this.cmbStatuscdtCliente);
-            this.pnlcdtFuncionario.Controls.Add(this.mskTelefonecdtCliente);
-            this.pnlcdtFuncionario.Controls.Add(this.lblTelefonecdtCliente);
-            this.pnlcdtFuncionario.Controls.Add(this.mskCEPcdtCliente);
-            this.pnlcdtFuncionario.Controls.Add(this.lblCepcdtCliente);
-            this.pnlcdtFuncionario.Controls.Add(this.txtEnderecocdtCliente);
-            this.pnlcdtFuncionario.Controls.Add(this.lblCargocdtCliente);
-            this.pnlcdtFuncionario.Controls.Add(this.txtSenhacdtCliente);
-            this.pnlcdtFuncionario.Controls.Add(this.lblSenhacdtCliente);
-            this.pnlcdtFuncionario.Controls.Add(this.mskDataNscdtCliente);
-            this.pnlcdtFuncionario.Controls.Add(this.lblDataNasccdtCliente);
-            this.pnlcdtFuncionario.Controls.Add(this.txtEmailcdtCliente);
-            this.pnlcdtFuncionario.Controls.Add(this.lblEmailcdtCliente);
-            this.pnlcdtFuncionario.Controls.Add(this.txtNomecdtCliente);
+            this.pnlcdtFuncionario.Controls.Add(this.lblCNPJcdtFornecedor);
+            this.pnlcdtFuncionario.Controls.Add(this.mskCNPJcdtFornecedor);
+            this.pnlcdtFuncionario.Controls.Add(this.btnSalvacdtFornecedor);
+            this.pnlcdtFuncionario.Controls.Add(this.btnLimpacdtFornecedor);
+            this.pnlcdtFuncionario.Controls.Add(this.lblstatuscdtFornecedor);
+            this.pnlcdtFuncionario.Controls.Add(this.cmbStatuscdtFornecedor);
+            this.pnlcdtFuncionario.Controls.Add(this.mskTelefonecdtFornecedor);
+            this.pnlcdtFuncionario.Controls.Add(this.lblTelefonecdtFornecedor);
+            this.pnlcdtFuncionario.Controls.Add(this.mskCEPcdtFornecedor);
+            this.pnlcdtFuncionario.Controls.Add(this.lblCepcdtFornecedor);
+            this.pnlcdtFuncionario.Controls.Add(this.txtEnderecocdtFornecedor);
+            this.pnlcdtFuncionario.Controls.Add(this.lblCargocdtFornecedor);
+            this.pnlcdtFuncionario.Controls.Add(this.txtNomecdtFornecedor);
             this.pnlcdtFuncionario.Controls.Add(this.pctVoltarcdtCliente);
-            this.pnlcdtFuncionario.Controls.Add(this.lblNomecdtCliente);
+            this.pnlcdtFuncionario.Controls.Add(this.lblNomecdtFornecedor);
             this.pnlcdtFuncionario.Controls.Add(this.lblcdtCliente);
             this.pnlcdtFuncionario.Controls.Add(this.pctcdtFuncionario);
             this.pnlcdtFuncionario.Location = new System.Drawing.Point(4, 5);
@@ -84,194 +76,153 @@
             this.pnlcdtFuncionario.Size = new System.Drawing.Size(1222, 655);
             this.pnlcdtFuncionario.TabIndex = 4;
             // 
-            // btnSalvacdtCliente
+            // lblCNPJcdtFornecedor
             // 
-            this.btnSalvacdtCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
-            this.btnSalvacdtCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSalvacdtCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalvacdtCliente.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnSalvacdtCliente.Location = new System.Drawing.Point(1012, 549);
-            this.btnSalvacdtCliente.Name = "btnSalvacdtCliente";
-            this.btnSalvacdtCliente.Size = new System.Drawing.Size(97, 36);
-            this.btnSalvacdtCliente.TabIndex = 55;
-            this.btnSalvacdtCliente.Text = "Salvar";
-            this.btnSalvacdtCliente.UseVisualStyleBackColor = false;
+            this.lblCNPJcdtFornecedor.AutoSize = true;
+            this.lblCNPJcdtFornecedor.BackColor = System.Drawing.Color.Black;
+            this.lblCNPJcdtFornecedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCNPJcdtFornecedor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
+            this.lblCNPJcdtFornecedor.Location = new System.Drawing.Point(470, 261);
+            this.lblCNPJcdtFornecedor.Name = "lblCNPJcdtFornecedor";
+            this.lblCNPJcdtFornecedor.Size = new System.Drawing.Size(115, 33);
+            this.lblCNPJcdtFornecedor.TabIndex = 57;
+            this.lblCNPJcdtFornecedor.Text = "CNPJ : ";
             // 
-            // btnLimpacdtCliente
+            // mskCNPJcdtFornecedor
             // 
-            this.btnLimpacdtCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
-            this.btnLimpacdtCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLimpacdtCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimpacdtCliente.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnLimpacdtCliente.Location = new System.Drawing.Point(881, 550);
-            this.btnLimpacdtCliente.Name = "btnLimpacdtCliente";
-            this.btnLimpacdtCliente.Size = new System.Drawing.Size(97, 36);
-            this.btnLimpacdtCliente.TabIndex = 54;
-            this.btnLimpacdtCliente.Text = "Limpar";
-            this.btnLimpacdtCliente.UseVisualStyleBackColor = false;
+            this.mskCNPJcdtFornecedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mskCNPJcdtFornecedor.Location = new System.Drawing.Point(476, 299);
+            this.mskCNPJcdtFornecedor.Mask = "00.000.000/0000-00";
+            this.mskCNPJcdtFornecedor.Name = "mskCNPJcdtFornecedor";
+            this.mskCNPJcdtFornecedor.Size = new System.Drawing.Size(290, 31);
+            this.mskCNPJcdtFornecedor.TabIndex = 56;
+            this.mskCNPJcdtFornecedor.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.mskCNPJcdtFornecedor.ValidatingType = typeof(System.DateTime);
             // 
-            // lblstatuscdtCliente
+            // btnSalvacdtFornecedor
             // 
-            this.lblstatuscdtCliente.AutoSize = true;
-            this.lblstatuscdtCliente.BackColor = System.Drawing.Color.Black;
-            this.lblstatuscdtCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblstatuscdtCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
-            this.lblstatuscdtCliente.Location = new System.Drawing.Point(470, 371);
-            this.lblstatuscdtCliente.Name = "lblstatuscdtCliente";
-            this.lblstatuscdtCliente.Size = new System.Drawing.Size(113, 33);
-            this.lblstatuscdtCliente.TabIndex = 52;
-            this.lblstatuscdtCliente.Text = "Status :";
+            this.btnSalvacdtFornecedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
+            this.btnSalvacdtFornecedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSalvacdtFornecedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalvacdtFornecedor.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnSalvacdtFornecedor.Location = new System.Drawing.Point(1012, 549);
+            this.btnSalvacdtFornecedor.Name = "btnSalvacdtFornecedor";
+            this.btnSalvacdtFornecedor.Size = new System.Drawing.Size(97, 36);
+            this.btnSalvacdtFornecedor.TabIndex = 55;
+            this.btnSalvacdtFornecedor.Text = "Salvar";
+            this.btnSalvacdtFornecedor.UseVisualStyleBackColor = false;
+            this.btnSalvacdtFornecedor.Click += new System.EventHandler(this.btnSalvacdtCliente_Click);
             // 
-            // cmbStatuscdtCliente
+            // btnLimpacdtFornecedor
             // 
-            this.cmbStatuscdtCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbStatuscdtCliente.FormattingEnabled = true;
-            this.cmbStatuscdtCliente.Items.AddRange(new object[] {
+            this.btnLimpacdtFornecedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
+            this.btnLimpacdtFornecedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLimpacdtFornecedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpacdtFornecedor.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnLimpacdtFornecedor.Location = new System.Drawing.Point(881, 550);
+            this.btnLimpacdtFornecedor.Name = "btnLimpacdtFornecedor";
+            this.btnLimpacdtFornecedor.Size = new System.Drawing.Size(97, 36);
+            this.btnLimpacdtFornecedor.TabIndex = 54;
+            this.btnLimpacdtFornecedor.Text = "Limpar";
+            this.btnLimpacdtFornecedor.UseVisualStyleBackColor = false;
+            // 
+            // lblstatuscdtFornecedor
+            // 
+            this.lblstatuscdtFornecedor.AutoSize = true;
+            this.lblstatuscdtFornecedor.BackColor = System.Drawing.Color.Black;
+            this.lblstatuscdtFornecedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblstatuscdtFornecedor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
+            this.lblstatuscdtFornecedor.Location = new System.Drawing.Point(834, 261);
+            this.lblstatuscdtFornecedor.Name = "lblstatuscdtFornecedor";
+            this.lblstatuscdtFornecedor.Size = new System.Drawing.Size(113, 33);
+            this.lblstatuscdtFornecedor.TabIndex = 52;
+            this.lblstatuscdtFornecedor.Text = "Status :";
+            // 
+            // cmbStatuscdtFornecedor
+            // 
+            this.cmbStatuscdtFornecedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbStatuscdtFornecedor.FormattingEnabled = true;
+            this.cmbStatuscdtFornecedor.Items.AddRange(new object[] {
             "ATIVO ",
             "INATIVO"});
-            this.cmbStatuscdtCliente.Location = new System.Drawing.Point(476, 416);
-            this.cmbStatuscdtCliente.Name = "cmbStatuscdtCliente";
-            this.cmbStatuscdtCliente.Size = new System.Drawing.Size(299, 33);
-            this.cmbStatuscdtCliente.TabIndex = 51;
+            this.cmbStatuscdtFornecedor.Location = new System.Drawing.Point(840, 297);
+            this.cmbStatuscdtFornecedor.Name = "cmbStatuscdtFornecedor";
+            this.cmbStatuscdtFornecedor.Size = new System.Drawing.Size(299, 33);
+            this.cmbStatuscdtFornecedor.TabIndex = 51;
             // 
-            // mskTelefonecdtCliente
+            // mskTelefonecdtFornecedor
             // 
-            this.mskTelefonecdtCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mskTelefonecdtCliente.Location = new System.Drawing.Point(476, 314);
-            this.mskTelefonecdtCliente.Mask = "(99)90000-0000";
-            this.mskTelefonecdtCliente.Name = "mskTelefonecdtCliente";
-            this.mskTelefonecdtCliente.Size = new System.Drawing.Size(290, 31);
-            this.mskTelefonecdtCliente.TabIndex = 50;
+            this.mskTelefonecdtFornecedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mskTelefonecdtFornecedor.Location = new System.Drawing.Point(476, 206);
+            this.mskTelefonecdtFornecedor.Mask = "(99)90000-0000";
+            this.mskTelefonecdtFornecedor.Name = "mskTelefonecdtFornecedor";
+            this.mskTelefonecdtFornecedor.Size = new System.Drawing.Size(290, 31);
+            this.mskTelefonecdtFornecedor.TabIndex = 50;
             // 
-            // lblTelefonecdtCliente
+            // lblTelefonecdtFornecedor
             // 
-            this.lblTelefonecdtCliente.AutoSize = true;
-            this.lblTelefonecdtCliente.BackColor = System.Drawing.Color.Black;
-            this.lblTelefonecdtCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTelefonecdtCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
-            this.lblTelefonecdtCliente.Location = new System.Drawing.Point(470, 268);
-            this.lblTelefonecdtCliente.Name = "lblTelefonecdtCliente";
-            this.lblTelefonecdtCliente.Size = new System.Drawing.Size(144, 33);
-            this.lblTelefonecdtCliente.TabIndex = 49;
-            this.lblTelefonecdtCliente.Text = "Telefone :";
+            this.lblTelefonecdtFornecedor.AutoSize = true;
+            this.lblTelefonecdtFornecedor.BackColor = System.Drawing.Color.Black;
+            this.lblTelefonecdtFornecedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTelefonecdtFornecedor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
+            this.lblTelefonecdtFornecedor.Location = new System.Drawing.Point(470, 170);
+            this.lblTelefonecdtFornecedor.Name = "lblTelefonecdtFornecedor";
+            this.lblTelefonecdtFornecedor.Size = new System.Drawing.Size(144, 33);
+            this.lblTelefonecdtFornecedor.TabIndex = 49;
+            this.lblTelefonecdtFornecedor.Text = "Telefone :";
             // 
-            // mskCEPcdtCliente
+            // mskCEPcdtFornecedor
             // 
-            this.mskCEPcdtCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mskCEPcdtCliente.Location = new System.Drawing.Point(116, 418);
-            this.mskCEPcdtCliente.Mask = "00000-000";
-            this.mskCEPcdtCliente.Name = "mskCEPcdtCliente";
-            this.mskCEPcdtCliente.Size = new System.Drawing.Size(290, 31);
-            this.mskCEPcdtCliente.TabIndex = 48;
-            this.mskCEPcdtCliente.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.mskCEPcdtCliente.ValidatingType = typeof(System.DateTime);
+            this.mskCEPcdtFornecedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mskCEPcdtFornecedor.Location = new System.Drawing.Point(115, 299);
+            this.mskCEPcdtFornecedor.Mask = "00000-000";
+            this.mskCEPcdtFornecedor.Name = "mskCEPcdtFornecedor";
+            this.mskCEPcdtFornecedor.Size = new System.Drawing.Size(290, 31);
+            this.mskCEPcdtFornecedor.TabIndex = 48;
+            this.mskCEPcdtFornecedor.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.mskCEPcdtFornecedor.ValidatingType = typeof(System.DateTime);
             // 
-            // lblCepcdtCliente
+            // lblCepcdtFornecedor
             // 
-            this.lblCepcdtCliente.AutoSize = true;
-            this.lblCepcdtCliente.BackColor = System.Drawing.Color.Black;
-            this.lblCepcdtCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCepcdtCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
-            this.lblCepcdtCliente.Location = new System.Drawing.Point(110, 371);
-            this.lblCepcdtCliente.Name = "lblCepcdtCliente";
-            this.lblCepcdtCliente.Size = new System.Drawing.Size(98, 33);
-            this.lblCepcdtCliente.TabIndex = 47;
-            this.lblCepcdtCliente.Text = "CEP : ";
+            this.lblCepcdtFornecedor.AutoSize = true;
+            this.lblCepcdtFornecedor.BackColor = System.Drawing.Color.Black;
+            this.lblCepcdtFornecedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCepcdtFornecedor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
+            this.lblCepcdtFornecedor.Location = new System.Drawing.Point(110, 263);
+            this.lblCepcdtFornecedor.Name = "lblCepcdtFornecedor";
+            this.lblCepcdtFornecedor.Size = new System.Drawing.Size(98, 33);
+            this.lblCepcdtFornecedor.TabIndex = 47;
+            this.lblCepcdtFornecedor.Text = "CEP : ";
             // 
-            // txtEnderecocdtCliente
+            // txtEnderecocdtFornecedor
             // 
-            this.txtEnderecocdtCliente.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtEnderecocdtCliente.Location = new System.Drawing.Point(840, 312);
-            this.txtEnderecocdtCliente.Multiline = true;
-            this.txtEnderecocdtCliente.Name = "txtEnderecocdtCliente";
-            this.txtEnderecocdtCliente.Size = new System.Drawing.Size(290, 33);
-            this.txtEnderecocdtCliente.TabIndex = 44;
+            this.txtEnderecocdtFornecedor.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtEnderecocdtFornecedor.Location = new System.Drawing.Point(840, 206);
+            this.txtEnderecocdtFornecedor.Multiline = true;
+            this.txtEnderecocdtFornecedor.Name = "txtEnderecocdtFornecedor";
+            this.txtEnderecocdtFornecedor.Size = new System.Drawing.Size(290, 33);
+            this.txtEnderecocdtFornecedor.TabIndex = 44;
             // 
-            // lblCargocdtCliente
+            // lblCargocdtFornecedor
             // 
-            this.lblCargocdtCliente.AutoSize = true;
-            this.lblCargocdtCliente.BackColor = System.Drawing.Color.Black;
-            this.lblCargocdtCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCargocdtCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
-            this.lblCargocdtCliente.Location = new System.Drawing.Point(834, 268);
-            this.lblCargocdtCliente.Name = "lblCargocdtCliente";
-            this.lblCargocdtCliente.Size = new System.Drawing.Size(155, 33);
-            this.lblCargocdtCliente.TabIndex = 43;
-            this.lblCargocdtCliente.Text = "Endereço :";
+            this.lblCargocdtFornecedor.AutoSize = true;
+            this.lblCargocdtFornecedor.BackColor = System.Drawing.Color.Black;
+            this.lblCargocdtFornecedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCargocdtFornecedor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
+            this.lblCargocdtFornecedor.Location = new System.Drawing.Point(834, 170);
+            this.lblCargocdtFornecedor.Name = "lblCargocdtFornecedor";
+            this.lblCargocdtFornecedor.Size = new System.Drawing.Size(155, 33);
+            this.lblCargocdtFornecedor.TabIndex = 43;
+            this.lblCargocdtFornecedor.Text = "Endereço :";
             // 
-            // txtSenhacdtCliente
+            // txtNomecdtFornecedor
             // 
-            this.txtSenhacdtCliente.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtSenhacdtCliente.Location = new System.Drawing.Point(840, 206);
-            this.txtSenhacdtCliente.Multiline = true;
-            this.txtSenhacdtCliente.Name = "txtSenhacdtCliente";
-            this.txtSenhacdtCliente.Size = new System.Drawing.Size(302, 33);
-            this.txtSenhacdtCliente.TabIndex = 42;
-            // 
-            // lblSenhacdtCliente
-            // 
-            this.lblSenhacdtCliente.AutoSize = true;
-            this.lblSenhacdtCliente.BackColor = System.Drawing.Color.Black;
-            this.lblSenhacdtCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSenhacdtCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
-            this.lblSenhacdtCliente.Location = new System.Drawing.Point(834, 170);
-            this.lblSenhacdtCliente.Name = "lblSenhacdtCliente";
-            this.lblSenhacdtCliente.Size = new System.Drawing.Size(106, 33);
-            this.lblSenhacdtCliente.TabIndex = 41;
-            this.lblSenhacdtCliente.Text = "Senha:";
-            // 
-            // mskDataNscdtCliente
-            // 
-            this.mskDataNscdtCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mskDataNscdtCliente.Location = new System.Drawing.Point(115, 314);
-            this.mskDataNscdtCliente.Mask = "00/00/0000";
-            this.mskDataNscdtCliente.Name = "mskDataNscdtCliente";
-            this.mskDataNscdtCliente.Size = new System.Drawing.Size(290, 31);
-            this.mskDataNscdtCliente.TabIndex = 40;
-            this.mskDataNscdtCliente.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.mskDataNscdtCliente.ValidatingType = typeof(System.DateTime);
-            // 
-            // lblDataNasccdtCliente
-            // 
-            this.lblDataNasccdtCliente.AutoSize = true;
-            this.lblDataNasccdtCliente.BackColor = System.Drawing.Color.Black;
-            this.lblDataNasccdtCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDataNasccdtCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
-            this.lblDataNasccdtCliente.Location = new System.Drawing.Point(110, 268);
-            this.lblDataNasccdtCliente.Name = "lblDataNasccdtCliente";
-            this.lblDataNasccdtCliente.Size = new System.Drawing.Size(199, 33);
-            this.lblDataNasccdtCliente.TabIndex = 16;
-            this.lblDataNasccdtCliente.Text = "Data de Nasc:";
-            // 
-            // txtEmailcdtCliente
-            // 
-            this.txtEmailcdtCliente.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtEmailcdtCliente.Location = new System.Drawing.Point(476, 206);
-            this.txtEmailcdtCliente.Multiline = true;
-            this.txtEmailcdtCliente.Name = "txtEmailcdtCliente";
-            this.txtEmailcdtCliente.Size = new System.Drawing.Size(299, 33);
-            this.txtEmailcdtCliente.TabIndex = 15;
-            // 
-            // lblEmailcdtCliente
-            // 
-            this.lblEmailcdtCliente.AutoSize = true;
-            this.lblEmailcdtCliente.BackColor = System.Drawing.Color.Black;
-            this.lblEmailcdtCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmailcdtCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
-            this.lblEmailcdtCliente.Location = new System.Drawing.Point(470, 170);
-            this.lblEmailcdtCliente.Name = "lblEmailcdtCliente";
-            this.lblEmailcdtCliente.Size = new System.Drawing.Size(115, 33);
-            this.lblEmailcdtCliente.TabIndex = 14;
-            this.lblEmailcdtCliente.Text = "E-mail :";
-            // 
-            // txtNomecdtCliente
-            // 
-            this.txtNomecdtCliente.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtNomecdtCliente.Location = new System.Drawing.Point(115, 206);
-            this.txtNomecdtCliente.Multiline = true;
-            this.txtNomecdtCliente.Name = "txtNomecdtCliente";
-            this.txtNomecdtCliente.Size = new System.Drawing.Size(290, 33);
-            this.txtNomecdtCliente.TabIndex = 4;
+            this.txtNomecdtFornecedor.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtNomecdtFornecedor.Location = new System.Drawing.Point(115, 206);
+            this.txtNomecdtFornecedor.Multiline = true;
+            this.txtNomecdtFornecedor.Name = "txtNomecdtFornecedor";
+            this.txtNomecdtFornecedor.Size = new System.Drawing.Size(290, 33);
+            this.txtNomecdtFornecedor.TabIndex = 4;
             // 
             // pctVoltarcdtCliente
             // 
@@ -282,18 +233,19 @@
             this.pctVoltarcdtCliente.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pctVoltarcdtCliente.TabIndex = 13;
             this.pctVoltarcdtCliente.TabStop = false;
+            this.pctVoltarcdtCliente.Click += new System.EventHandler(this.pctVoltarcdtCliente_Click);
             // 
-            // lblNomecdtCliente
+            // lblNomecdtFornecedor
             // 
-            this.lblNomecdtCliente.AutoSize = true;
-            this.lblNomecdtCliente.BackColor = System.Drawing.Color.Black;
-            this.lblNomecdtCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNomecdtCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
-            this.lblNomecdtCliente.Location = new System.Drawing.Point(109, 170);
-            this.lblNomecdtCliente.Name = "lblNomecdtCliente";
-            this.lblNomecdtCliente.Size = new System.Drawing.Size(109, 33);
-            this.lblNomecdtCliente.TabIndex = 9;
-            this.lblNomecdtCliente.Text = "Nome :";
+            this.lblNomecdtFornecedor.AutoSize = true;
+            this.lblNomecdtFornecedor.BackColor = System.Drawing.Color.Black;
+            this.lblNomecdtFornecedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNomecdtFornecedor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(200)))), ((int)(((byte)(75)))));
+            this.lblNomecdtFornecedor.Location = new System.Drawing.Point(109, 170);
+            this.lblNomecdtFornecedor.Name = "lblNomecdtFornecedor";
+            this.lblNomecdtFornecedor.Size = new System.Drawing.Size(109, 33);
+            this.lblNomecdtFornecedor.TabIndex = 9;
+            this.lblNomecdtFornecedor.Text = "Nome :";
             // 
             // lblcdtCliente
             // 
@@ -304,7 +256,7 @@
             this.lblcdtCliente.Name = "lblcdtCliente";
             this.lblcdtCliente.Size = new System.Drawing.Size(529, 48);
             this.lblcdtCliente.TabIndex = 8;
-            this.lblcdtCliente.Text = "CADASTRAR CLIENTE";
+            this.lblcdtCliente.Text = "CADASTRAR FORNECEDOR";
             this.lblcdtCliente.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pctcdtFuncionario
@@ -326,7 +278,9 @@
             this.Controls.Add(this.pnlcdtFuncionario);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "cdtFornecedor";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "cdtFornecedor";
+            this.Load += new System.EventHandler(this.cdtFornecedor_Load);
             this.pnlcdtFuncionario.ResumeLayout(false);
             this.pnlcdtFuncionario.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctVoltarcdtCliente)).EndInit();
@@ -338,26 +292,22 @@
         #endregion
 
         private System.Windows.Forms.Panel pnlcdtFuncionario;
-        private System.Windows.Forms.Button btnSalvacdtCliente;
-        private System.Windows.Forms.Button btnLimpacdtCliente;
-        private System.Windows.Forms.Label lblstatuscdtCliente;
-        private System.Windows.Forms.ComboBox cmbStatuscdtCliente;
-        private System.Windows.Forms.MaskedTextBox mskTelefonecdtCliente;
-        private System.Windows.Forms.Label lblTelefonecdtCliente;
-        private System.Windows.Forms.MaskedTextBox mskCEPcdtCliente;
-        private System.Windows.Forms.Label lblCepcdtCliente;
-        private System.Windows.Forms.TextBox txtEnderecocdtCliente;
-        private System.Windows.Forms.Label lblCargocdtCliente;
-        private System.Windows.Forms.TextBox txtSenhacdtCliente;
-        private System.Windows.Forms.Label lblSenhacdtCliente;
-        private System.Windows.Forms.MaskedTextBox mskDataNscdtCliente;
-        private System.Windows.Forms.Label lblDataNasccdtCliente;
-        private System.Windows.Forms.TextBox txtEmailcdtCliente;
-        private System.Windows.Forms.Label lblEmailcdtCliente;
-        private System.Windows.Forms.TextBox txtNomecdtCliente;
+        private System.Windows.Forms.Button btnSalvacdtFornecedor;
+        private System.Windows.Forms.Button btnLimpacdtFornecedor;
+        private System.Windows.Forms.MaskedTextBox mskTelefonecdtFornecedor;
+        private System.Windows.Forms.Label lblTelefonecdtFornecedor;
+        private System.Windows.Forms.MaskedTextBox mskCEPcdtFornecedor;
+        private System.Windows.Forms.Label lblCepcdtFornecedor;
+        private System.Windows.Forms.TextBox txtEnderecocdtFornecedor;
+        private System.Windows.Forms.Label lblCargocdtFornecedor;
+        private System.Windows.Forms.TextBox txtNomecdtFornecedor;
         private System.Windows.Forms.PictureBox pctVoltarcdtCliente;
-        private System.Windows.Forms.Label lblNomecdtCliente;
+        private System.Windows.Forms.Label lblNomecdtFornecedor;
         private System.Windows.Forms.Label lblcdtCliente;
         private System.Windows.Forms.PictureBox pctcdtFuncionario;
+        private System.Windows.Forms.Label lblCNPJcdtFornecedor;
+        private System.Windows.Forms.MaskedTextBox mskCNPJcdtFornecedor;
+        private System.Windows.Forms.Label lblstatuscdtFornecedor;
+        private System.Windows.Forms.ComboBox cmbStatuscdtFornecedor;
     }
 }
