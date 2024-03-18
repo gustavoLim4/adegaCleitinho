@@ -100,10 +100,37 @@ namespace adegaCleitinho
                 }
                 else if (variaveis.funcao == "ALTERAR")
                 {
-                    
+                    banco.AlterarCliente();
                 }
                 btnLimpacdtCliente.Enabled = false;
             }
         }
+
+        private void cdtClientes_Load(object sender, EventArgs e)
+        {
+            if (variaveis.funcao == "ALTERAR")
+            {
+                banco.CarregarDadosClientes();
+                txtNomecdtCliente.Text = variaveis.nomeUsuario;
+                txtEmailcdtCliente.Text = variaveis.emailUsuario;
+                txtSenhacdtCliente.Text = variaveis.senhaUsuario;
+                mskDataNscdtCliente.Text = variaveis.dataNascUsuario.ToString();
+                mskTelefonecdtCliente.Text = variaveis.telefoneUsuario.ToString();
+                txtEnderecocdtCliente.Text = variaveis.enderecoUsuario;
+                mskCEPcdtCliente.Text = variaveis.cepUsuario.ToString();
+                cmbStatuscdtCliente.Text = variaveis.statusUsuario;
+
+                txtNomecdtCliente.Enabled = true;
+                txtEmailcdtCliente.Enabled = true;
+                txtSenhacdtCliente.Enabled = true;
+                mskDataNscdtCliente.Enabled = true;
+                mskTelefonecdtCliente.Enabled = true;
+                txtEnderecocdtCliente.Enabled = true;
+                mskCEPcdtCliente.Enabled = true;
+                cmbStatuscdtCliente.Enabled = true;
+            }
+        }
+
+        
     }
 }

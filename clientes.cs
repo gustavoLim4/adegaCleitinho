@@ -60,5 +60,33 @@ namespace adegaCleitinho
             new cdtClientes().Show();
             Hide();
         }
+
+        private void btnAlterarClientes_Click(object sender, EventArgs e)
+        {
+            variaveis.funcao = "ALTERAR";
+            new cdtClientes().Show();
+            Hide();
+        }
+
+        private void dgvCliente_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            variaveis.linhaSelecionada = int.Parse(e.RowIndex.ToString());
+            if (variaveis.linhaSelecionada >= 0)
+            {
+                variaveis.codUsuario = Convert.ToInt32(dgvCliente[0, variaveis.linhaSelecionada].Value);
+            }
+        }
+
+        private void btnExcluirClientes_Click(object sender, EventArgs e)
+        {
+            if (variaveis.linhaSelecionada >= 0)
+            {
+                var resposta = MessageBox.Show("Deseja realmente EXCLUIR? Essa ação não poderá ser desfeita ", "Excluir", MessageBoxButtons.YesNo);
+                if (resposta == DialogResult.Yes)
+                {
+                    
+                }
+            }
+        }
     }
 }

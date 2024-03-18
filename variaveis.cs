@@ -39,7 +39,7 @@ namespace adegaCleitinho
 
         public static string nomeUsuario, emailUsuario, senhaUsuario, telefoneUsuario, enderecoUsuario, cepUsuario, statusUsuario;
         public static DateTime dataNascUsuario;
-
+        public static int codUsuario;
         //clientes
 
 

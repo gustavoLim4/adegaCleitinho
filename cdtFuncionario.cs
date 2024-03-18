@@ -296,5 +296,7 @@ namespace adegaCleitinho
                 btnLimapacdtFuncionario.Enabled = false;
             }
         }
+
+        
     }
 }

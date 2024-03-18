@@ -621,7 +621,64 @@ namespace adegaCleitinho
                 MessageBox.Show("Erro ao cadastra funcionario!\n\n" + erro.Message, "ERRO");
             }
         }
+        public static void AlterarCliente()
+        {
+            try
+            {
+                conexao.Conectar();
+                string inserir = "UPDATE usuarios SET nomeUsuario=@nome,emailUsuario=@email,senhaUsuario=@senha,dataNascUsuario=@dataNasc,telefoneUsuario=@telefone,enderecoUsuario=@endereco,cepUsuario=@cep,statusUsuario=@status WHERE idUsuario = @codigo";
+                MySqlCommand cmd = new MySqlCommand(inserir, conexao.conn);
 
+                cmd.Parameters.AddWithValue("@codigo", variaveis.codUsuario);
+                cmd.Parameters.AddWithValue("@nome", variaveis.nomeUsuario);
+                cmd.Parameters.AddWithValue("@email", variaveis.emailUsuario);
+                cmd.Parameters.AddWithValue("@senha", variaveis.senhaUsuario);
+                cmd.Parameters.AddWithValue("@dataNasc", variaveis.dataNascUsuario);
+                cmd.Parameters.AddWithValue("@telefone", variaveis.telefoneUsuario);
+                cmd.Parameters.AddWithValue("@endereco", variaveis.enderecoUsuario);
+                cmd.Parameters.AddWithValue("@cep", variaveis.cepUsuario);
+                cmd.Parameters.AddWithValue("@status", variaveis.statusUsuario);
+
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Cliente alterado com sucessso!", "ALTERAÇÃO DO Cliente");
+
+            }
+
+            catch (Exception erro)
+            {
+                MessageBox.Show("Erro ao carregar os dados do cliente !\n\n" + erro);
+            }
+        }
+        public static void CarregarDadosClientes()
+        {
+            try
+            {
+                conexao.Conectar();
+                string selecionar = "SELECT * FROM usuarios WHERE idUsuario = @codigo;";
+                MySqlCommand cmd = new MySqlCommand(selecionar, conexao.conn);
+                cmd.Parameters.AddWithValue("@codigo", variaveis.codUsuario);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    variaveis.nomeUsuario = reader.GetString(1);
+                    variaveis.emailUsuario = reader.GetString(2);
+                    variaveis.senhaUsuario = reader.GetString(3);
+                    variaveis.dataNascUsuario = reader.GetDateTime(4);
+                    variaveis.telefoneUsuario = reader.GetString(5);
+                    variaveis.enderecoUsuario = reader.GetString(6);
+                    variaveis.cepUsuario = reader.GetString(7);
+                    variaveis.statusUsuario = reader.GetString(8);
+                }
+                conexao.Desconectar();
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show("Erro ao carregar os dados do cliente !\n\n" + erro);
+            }
+
+
+        }
         //Clientes
 
 

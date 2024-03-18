@@ -199,6 +199,7 @@
             this.pnlFuncionario.Name = "pnlFuncionario";
             this.pnlFuncionario.Size = new System.Drawing.Size(1222, 655);
             this.pnlFuncionario.TabIndex = 0;
+            
             // 
             // pctVoltaFuncionario
             // 

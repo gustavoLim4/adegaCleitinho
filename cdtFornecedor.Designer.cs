@@ -1,6 +1,6 @@
 ﻿namespace adegaCleitinho
 {
-    partial class cdtClientes
+    partial class cdtFornecedor
     {
         /// <summary>
         /// Required designer variable.
@@ -82,7 +82,7 @@
             this.pnlcdtFuncionario.Location = new System.Drawing.Point(4, 5);
             this.pnlcdtFuncionario.Name = "pnlcdtFuncionario";
             this.pnlcdtFuncionario.Size = new System.Drawing.Size(1222, 655);
-            this.pnlcdtFuncionario.TabIndex = 3;
+            this.pnlcdtFuncionario.TabIndex = 4;
             // 
             // btnSalvacdtCliente
             // 
@@ -96,7 +96,6 @@
             this.btnSalvacdtCliente.TabIndex = 55;
             this.btnSalvacdtCliente.Text = "Salvar";
             this.btnSalvacdtCliente.UseVisualStyleBackColor = false;
-            this.btnSalvacdtCliente.Click += new System.EventHandler(this.btnSalvacdtCliente_Click);
             // 
             // btnLimpacdtCliente
             // 
@@ -283,7 +282,6 @@
             this.pctVoltarcdtCliente.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pctVoltarcdtCliente.TabIndex = 13;
             this.pctVoltarcdtCliente.TabStop = false;
-            this.pctVoltarcdtCliente.Click += new System.EventHandler(this.pctVoltarcdtCliente_Click);
             // 
             // lblNomecdtCliente
             // 
@@ -319,7 +317,7 @@
             this.pctcdtFuncionario.TabIndex = 2;
             this.pctcdtFuncionario.TabStop = false;
             // 
-            // cdtClientes
+            // cdtFornecedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -327,10 +325,8 @@
             this.ClientSize = new System.Drawing.Size(1230, 665);
             this.Controls.Add(this.pnlcdtFuncionario);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "cdtClientes";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "cdtClientes";
-            this.Load += new System.EventHandler(this.cdtClientes_Load);
+            this.Name = "cdtFornecedor";
+            this.Text = "cdtFornecedor";
             this.pnlcdtFuncionario.ResumeLayout(false);
             this.pnlcdtFuncionario.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctVoltarcdtCliente)).EndInit();

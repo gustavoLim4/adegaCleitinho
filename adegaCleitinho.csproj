@@ -105,6 +105,12 @@
     <Compile Include="cdtClientes.Designer.cs">
       <DependentUpon>cdtClientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="cdtFornecedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cdtFornecedor.Designer.cs">
+      <DependentUpon>cdtFornecedor.cs</DependentUpon>
+    </Compile>
     <Compile Include="cdtFuncionario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,6 +172,9 @@
     <Compile Include="variaveis.cs" />
     <EmbeddedResource Include="cdtClientes.resx">
       <DependentUpon>cdtClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cdtFornecedor.resx">
+      <DependentUpon>cdtFornecedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="cdtFuncionario.resx">
       <DependentUpon>cdtFuncionario.cs</DependentUpon>

@@ -94,7 +94,7 @@ namespace adegaCleitinho
 
         private void btnFornecedores_Click(object sender, EventArgs e)
         {
-            if (variaveis.nivel == "NÍVEL 2")
+            if (variaveis.nivel == "NÍVEL 1")
             {
                 new Fornecedor().Show();
                 Hide();
