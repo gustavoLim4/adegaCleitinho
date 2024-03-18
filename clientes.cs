@@ -52,5 +52,13 @@ namespace adegaCleitinho
                 cbxClientes.Checked = true;
             }
         }
+
+        private void btnCadastrarClientes_Click(object sender, EventArgs e)
+        {
+            variaveis.funcao = "CADASTRAR";
+
+            new cdtClientes().Show();
+            Hide();
+        }
     }
 }

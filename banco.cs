@@ -595,6 +595,33 @@ namespace adegaCleitinho
                 MessageBox.Show("Erro ao carregar nome clientes!\n\n" + erro);
             }
         }
+        public static void InserirCliente()
+        {
+            try
+            {
+                conexao.Conectar();
+                string inserir = "INSERT INTO usuarios(nomeUsuario,emailUsuario, senhaUsuario, dataNascUsuario, telefoneUsuario, enderecoUsuario, cepUsuario, statusUsuario) VALUES (@nome,@email,@senha,@dataNasc,@telefone,@endereco,@cep,@status);";
+                MySqlCommand cmd = new MySqlCommand(inserir, conexao.conn);
+
+                cmd.Parameters.AddWithValue("@nome", variaveis.nomeUsuario);
+                cmd.Parameters.AddWithValue("@email", variaveis.emailUsuario);
+                cmd.Parameters.AddWithValue("@senha", variaveis.senhaUsuario);
+                cmd.Parameters.AddWithValue("@dataNasc", variaveis.dataNascUsuario);
+                cmd.Parameters.AddWithValue("@telefone", variaveis.telefoneUsuario);
+                cmd.Parameters.AddWithValue("@endereco", variaveis.enderecoUsuario);
+                cmd.Parameters.AddWithValue("@cep", variaveis.cepUsuario);
+                cmd.Parameters.AddWithValue("@status", variaveis.statusUsuario);
+
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Funcionario cadastro com sucesso!", "CADASTRO FUNCIONÁRIO");
+                conexao.Desconectar();
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show("Erro ao cadastra funcionario!\n\n" + erro.Message, "ERRO");
+            }
+        }
+
         //Clientes
 
 

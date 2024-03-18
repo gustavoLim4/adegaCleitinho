@@ -79,14 +79,30 @@ namespace adegaCleitinho
 
         private void btnClientes_Click(object sender, EventArgs e)
         {
+            if (variaveis.nivel == "NÍVEL 1")
+            {
+                new cdtClientes().Show();
+                Hide();
+            }
+            else
+            {
+                MessageBox.Show("Você não tem permissão para acessar essa tela.");
+            }
             new clientes().Show();
             Hide();
         }
 
         private void btnFornecedores_Click(object sender, EventArgs e)
         {
-            new Fornecedor().Show();
-            Hide();
+            if (variaveis.nivel == "NÍVEL 2")
+            {
+                new Fornecedor().Show();
+                Hide();
+            }
+            else
+            {
+                MessageBox.Show("Você não tem permissão para acessar essa tela.");
+            }
         }
 
         private void btnEmail_Click(object sender, EventArgs e)
@@ -103,8 +119,15 @@ namespace adegaCleitinho
 
         private void btnCompras_Click(object sender, EventArgs e)
         {
-            new compra().Show();
-            Hide();
+            if (variaveis.nivel == "NÍVEL 2")
+            {
+                new compra().Show();
+                Hide();
+            }
+            else
+            {
+                MessageBox.Show("Você não tem permissão para acessar essa tela.");
+            }
         }
 
      
