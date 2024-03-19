@@ -469,10 +469,6 @@ namespace adegaCleitinho
             }
         }
 
-
-
-
-
         public static void DesativarFuncionario()
         {
             try
